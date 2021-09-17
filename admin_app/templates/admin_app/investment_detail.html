@@ -1,0 +1,88 @@
+{% extends "admin_app/base.html" %}
+{% load static %}
+{% block content %}
+
+
+   <!-- Navbar -->
+  {% include 'admin_app/nav.html' %}
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  {% include 'admin_app/sidebar.html' %}
+<!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>{{ investor }}</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">My Investment</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        
+        <div class="col-md-12">
+          <!-- general form elements -->
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Information about {{ investment }} Investment</h3>
+            </div>
+            <br />
+            <div class="row container">
+              <h2 class="container">{{ investment.app_user.public_key }}</h2>
+
+              <br /><br /><br />
+              <form method="post">
+                {% csrf_token %}
+                <div class="row">
+                  <select name="status" id="cars">
+                    {% if investment.payment_status_k == True %}
+                    <option value="activate" selected>Activate</option>
+                    <option value="deactivate">Deactivate</option>
+                    {% else %}
+                    <option value="activate">Activate</option>
+                    <option value="deactivate" selected>Deactivate</option>
+                    {% endif %}
+                  </select>
+                </div>
+
+                <div class="row">
+                  <button type="submit">Submit</button>
+                      
+                </div>
+                
+              </form>
+                
+            </div>                
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Main Footer -->
+  <footer class="main-footer" style="background-color: #2d3653">
+    <strong>Copyright &copy; 2014-2021 <a href="https://admin_applte.io">admin_appLTE.io</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 3.1.0
+    </div>
+  </footer>
+</div>
+<!-- ./wrapper -->
+
+
+
+{% endblock %}

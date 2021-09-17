@@ -1,0 +1,119 @@
+{% extends "app_user/base.html" %}
+{% load static %}
+{% block content %}
+
+
+   <!-- Navbar -->
+  {% include 'app_user/nav.html' %}
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  {% include 'app_user/sidebar.html' %}
+<!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Commit</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Commit</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          
+          <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Commit New Investment</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+
+              <br /><br />
+              <div class="row container">
+
+                <div class="col-md-6">
+                  <p>Package 1</p>
+                  <p>
+                  Make 3.44BNB payment to 0x1232434212434
+                  <br /><br />
+                  <a href="#">copy wallet address: pay via external wallet</a>
+                  <br />
+
+                  <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    Upload proof of payment<br />
+                    <input type="file" name="proof_photo1">
+                    <br />
+                    <input type="file" name="proof_photo2">
+                    <br /><br />
+                    <button type="submit">Submit</button>
+                    
+                  </form>
+
+              
+
+
+                </p>
+                </div>
+
+                <div class="col-md-6">
+                  or 
+                  <br />
+                  <a href="{% url 'app_user:make_commit_crypto' package_type %}">pay via your OPY wallet</a>
+                  <br />
+                  
+                </div>
+
+              </div>
+
+
+
+
+
+
+              
+            </div>
+            <!-- /.card -->
+
+                    
+                </div>
+                <!-- /.tab-content -->
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main Footer -->
+  <footer class="main-footer" style="background-color: #2d3653">
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 3.1.0
+    </div>
+  </footer>
+</div>
+<!-- ./wrapper -->
+
+
+
+{% endblock %}

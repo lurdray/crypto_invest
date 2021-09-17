@@ -1,0 +1,241 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Complete Sign Up.</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'dashboard/plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="{% static 'dashboard/plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'dashboard/dist/css/adminlte.min.css' %}">
+</head> 
+<body class="hold-transition login-page" style="background-color: #0e1326">
+  <style type="text/css">
+    
+    .alert{
+        box-shadow: 5px 5px 10px #111;
+        border: none;
+        }
+        @keyframes show-toast {
+        0%   {bottom: -100%;}
+        20%  {bottom: 50px;}
+        80%  {bottom: 50px;}
+        100% {bottom: -10%;}
+    }
+
+    .notification.is-toast {
+        z-index: 1;
+        position: fixed;
+        bottom: 100%;
+        right: 20px;
+        animation-name: show-toast;
+        animation-duration: 10s;
+    }
+@media(max-width: 100%) {
+    h3{
+      font-size: 15px !important;
+    }
+  }
+</style>
+
+  {% if messages %}
+    {% for message in messages %}
+        <div class="notification is-toast alert alert-{{message.tags}} text-center" role="alert" style="background-color: #1DB954; color: #fff; border-radius: 6px; font-weight: 600;">
+            {{ message }}
+        </div>
+    {% endfor %}
+  {% endif %}
+
+<div class="login-box" style="background-color: #0e1326; width: 50%; max-height: 100%;">
+  <br /><br />
+  <!-- /.login-logo -->
+  <div class="card card-outline card-yellow">
+    <div class="card-header text-center" style="background-color: #343a40;">
+      <a href="#" class="h2"><b style="color: #f5bd02">1. Complete sign up</b></a>
+    </div>
+    <div class="card-body" style="background-color: #343a40">
+      <p class="login-box-msg" style="color: #fff">You have to send $5 worth of BNB to the Binance Smart Chain wallet below:<br />
+        <small style="color: #f5bd02">0x100000000000000000000000000000000000</small>
+      </p>
+      <div class="col-12">
+        
+            <button style="background-color: #0e1326" type="submit" class="btn btn-primary btn-block copy-btn" data-hex="0x100000000000000000000000000000000000">copy to clipboard!</button>
+          </div>
+
+      <form method="post">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+          <br /><br /><br />
+          <p style="color: #fff">Enter or paste the wallet address you made the registration payment from.</p>
+        </div>
+        <div class="input-group mb-3">
+          <input style="background-color: #0e1326; color: #fff" name="payment_wallet_address" type="text" class="form-control" placeholder="Paste or input your wallet address.">
+          <div class="input-group-append">
+            <div class="input-group-text" style="background-color: #0e1326">
+              <span class="fas fa-lock" style="color: #f5bd02;"></span>
+            </div>
+          </div>
+        </div>
+        <br /><br />
+        <div class="card-header text-center" style="background-color: #343a40;">
+          <a href="#" class="h2"><b style="color: #f5bd02">2. Complete sign up</b></a>
+        </div>
+
+        <div class="form-group">
+        <label>Date of Birth:</label>
+          <div class="input-group date" id="reservationdate" data-target-input="nearest">
+              <input name="dob" type="text" class="form-control datetimepicker-input" data-target="#reservationdate">
+              <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                  <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+              </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label>House Address</label>
+          <textarea name="house_address" class="form-control" rows="3" placeholder="Enter your house address..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">Phone Number</label>
+          <input name="phone_no" type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter your mobile phone number...">
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-6 col-md-6">
+            <div class="form-group">
+            <label for="exampleInputFile">Upload ID Card Photo</label>
+            <div class="input-group">
+              <div class="custom-file">
+                <input name="id_image" type="file" class="form-control upload-box btn btn-primary" >
+                <label style="display: none">Choose file</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+          <!-- <label for="customFile">Custom File</label> -->
+
+          
+        </div>
+
+          </div>
+          <div class="col-lg-6 col-md-6">
+            <div class="form-group">
+              <label for="exampleInputPassword1">ID Card Number</label>
+              <input name="id_number" type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter ID Card Number...">
+            </div>
+          </div>
+          
+        </div>
+
+
+        <div class="row">
+
+          <div class="col-lg-4 col-md-4">
+            <div class="form-group">
+              <label for="exampleInputPassword1">State of Origin</label>
+              <input name="state_of_origin" type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter your state of origin..">
+            </div>
+
+          </div>
+          <div class="col-lg-4 col-md-4">
+            <div class="form-group">
+              <label for="exampleInputPassword1">Country</label>
+              <input name="country" type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Country...">
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4">
+            <div class="form-group">
+              <label for="exampleInputPassword1">Language</label>
+              <input name="language" type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter your Language...">
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">Bank Name</label>
+          <input name="bank_name" type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter the name of your bank..">
+        </div>
+        
+        <div class="row">
+
+          <div class="col-lg-4 col-md-4">
+            <div class="form-group">
+            <label for="exampleInputPassword1">Account Name</label>
+            <input name="bank_account_name" type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter your bank name...">
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4">
+            <div class="form-group">
+            <label for="exampleInputPassword1">Account Number</label>
+            <input name="bank_account_number" type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter your bank account number...">
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-4">
+            <div class="form-group">
+            <label for="exampleInputPassword1">BVN</label>
+            <input name="bank_verification_number" type="text" class="form-control" id="exampleInputPassword1" placeholder="Input bank verification number">
+            </div>
+          </div>
+
+
+        </div>
+        
+
+        
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">I consent that i understand that my personal details are stored on the platform.</label>
+        </div>
+
+
+
+        <div class="row">
+          <!-- /.col -->
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary btn-block">Complete!</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <br /><br />
+  <!-- /.card -->
+</div>
+<!-- /.login-box -->
+<script type="text/javascript">
+  const copyBtns = [...document.getElementsByClassName('copy-btn')]
+  let previous = null
+
+  copyBtns.forEach(btn=> btn.addEventListener('click', ()=>{
+    const number = btn.getAttribute('data-hex')
+    navigator.clipboard.writeText(number)
+    btn.textContent = 'copied'
+
+    if (previous) {
+      previous.textContent = 'click'
+    }
+    previous = btn
+  }))
+</script>
+
+<!-- jQuery -->
+<script src="{% static 'dashboard/plugins/jquery/jquery.min.j' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'dashboard/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'dashboard/dist/js/adminlte.min.js' %}"></script>
+</body>
+</html>

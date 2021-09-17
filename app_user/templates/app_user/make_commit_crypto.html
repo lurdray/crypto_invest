@@ -1,0 +1,110 @@
+{% extends "app_user/base.html" %}
+{% load static %}
+{% block content %}
+
+
+   <!-- Navbar -->
+  {% include 'app_user/nav.html' %}
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  {% include 'app_user/sidebar.html' %}
+<!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Commit</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Commit</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          
+          <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Commit New Investment</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+
+              <br /><br />
+              <div class="row container">
+
+                <div class="col-md-6">
+                  <p>Make Payment</p>
+                  <p>
+                  Pay {{ package_type }}BNB from your OPY wallet to us!
+                  <br />
+                  <br />
+
+                  <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <button type="submit">Pay Now!</button>
+                    
+                  </form>
+
+              
+
+
+                </p>
+                </div>
+
+                <div class="col-md-6">
+                  <br />
+  
+                  </div>
+
+              </div>
+
+
+
+
+
+
+              
+            </div>
+            <!-- /.card -->
+
+                    
+                </div>
+                <!-- /.tab-content -->
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main Footer -->
+  <footer class="main-footer" style="background-color: #2d3653">
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 3.1.0
+    </div>
+  </footer>
+</div>
+<!-- ./wrapper -->
+
+
+
+{% endblock %}

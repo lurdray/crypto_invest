@@ -1,0 +1,169 @@
+{% extends "admin_app/base.html" %}
+{% load static %}
+{% block content %}
+
+
+
+  <!-- Preloader -->
+  <div class="preloader flex-column justify-content-center align-items-center" style="background-color: #0e1326">
+    <img class="animation__wobble" src="{% static 'admin_app/dist/img/AdminLTELogo.png' %}" alt="AdminLTELogo" height="60" width="60">
+  </div>
+
+  <!-- Navbar -->
+  {% include 'admin_app/nav.html' %}
+  <!-- /.navbar -->
+
+  {% include 'admin_app/sidebar.html' %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper" >
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0" style="color: #0e1326">Admin Dashboard</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Admin Dashboard</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <style type="text/css">
+    .ps-btn{
+        background-color: #ed017f !important;
+        color: #000000 !important;
+    }
+    .ps-btn:hover{
+        background-color: #9a0052 !important;
+        color: #fff !important;
+    }
+    .btn-success {
+        background-color: #9a0052 !important;
+        color: #fff !important;
+        border: none;
+    }
+    .btn-success:hover{
+        background-color: #ed017f !important;
+        color: #000000 !important;
+        border: none;
+    }
+    .btn-success a:hover{
+        
+        color: #000000 !important;
+        border: none;
+    }
+    .alert{
+        box-shadow: 5px 5px 10px #111;
+        border: none;
+    }
+    @keyframes show-toast {
+    0%   {bottom: -100%;}
+    20%  {bottom: 50px;}
+    80%  {bottom: 50px;}
+    100% {bottom: -10%;}
+}
+
+.notification.is-toast {
+    z-index: 1;
+    position: fixed;
+    bottom: 100%;
+    right: 20px;
+    animation-name: show-toast;
+    animation-duration: 20s;
+}
+@media(max-width: 450px) {
+    h3{
+      font-size: 15px !important;
+    }
+  }
+</style>
+
+  {% if messages %}
+    {% for message in messages %}
+        <div class="notification is-toast alert alert-{{message.tags}} text-center" role="alert" style="background-color: #1DB954; color: #fff; border-radius: 6px; font-weight: 600;">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+
+  
+  <section class="content">
+      <div class="container-fluid">
+
+        <div class="row">
+          <p>Welcome Admin</p>
+        </div>
+
+      </div>
+
+  </section>
+
+
+
+
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+
+ 
+  <!-- Main Footer -->
+  <footer class="main-footer" style="background-color: #2d3653">
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+   
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 3.1.0
+    </div>
+  </footer>
+</div>
+<!-- ./wrapper -->
+<script type="text/javascript">
+  let ws = new WebSocket("wss://stream.binance.com:9443/ws/ethbusd@trade");
+  let bs = new WebSocket("wss://stream.binance.com:9443/ws/btcbusd@trade");
+  let bn = new WebSocket("wss://stream.binance.com:9443/ws/bnbbusd@trade");
+  let stockPriceElement = document.getElementById('btc-price');
+  let stockPriceElements = document.getElementById('eth-price');
+  let bnbPriceElements = document.getElementById('bnb-price');
+  let lastPrice = null;
+
+  bs.onmessage = (event) => {
+    let stockObject = JSON.parse(event.data)
+    let price = parseFloat(stockObject.p).toFixed(2);
+    stockPriceElement.innerText = price;
+
+    stockPriceElement.style.color = !lastPrice || lastPrice === price ? 'white' : price > lastPrice ? 'green' : 'red';
+    lastPrice = price;
+}
+
+  ws.onmessage = (event) => {
+    let stockObject = JSON.parse(event.data)
+    let price = parseFloat(stockObject.p).toFixed(2);
+    stockPriceElements.innerText = price;
+
+    stockPriceElements.style.color = !lastPrice || lastPrice === price ? 'white' : price > lastPrice ? 'green' : 'red';
+    lastPrice = price;
+}
+
+bn.onmessage = (event) => {
+    let stockObject = JSON.parse(event.data)
+    let price = parseFloat(stockObject.p).toFixed(2);
+    bnbPriceElements.innerText = price;
+
+    bnbPriceElements.style.color = !lastPrice || lastPrice === price ? 'white' : price > lastPrice ? 'green' : 'red';
+    lastPrice = price;
+}
+</script>
+
+{% endblock %}

@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<style type="text/css">
+.ps-page--comming-soon {
+  text-align: center;
+
+}
+
+.ps-page--comming-soon .ps-countdown li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.ps-page--comming-soon .ps-countdown li span {
+  margin-bottom: 0;
+  font-weight: 600;
+  font-size: 28px;
+  color: #f39c12;
+  line-height: 1em;
+}
+
+.ps-page--comming-soon .ps-page__header {
+  padding: 50px 0;
+}
+
+.ps-page--comming-soon .ps-page__header .ps-logo {
+  display: inline-block;
+}
+
+
+.ps-page--comming-soon figure figcaption {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+</style>
+
+
+    <div class="ps-page--comming-soon">
+        
+           
+                <figure>
+                    <ul style="color: #f39c12" class="ps-countdown" data-time="{{ investment.due_date }}">
+                        <li><span class="days"></span>
+                            <p style="color: #f39c12">Days</p>
+                        </li>
+                        <li><span class="hours"></span>
+                            <p style="color: #f39c12">Hrs</p>
+                        </li>
+                        <li><span class="minutes"></span>
+                            <p style="color: #f39c12">Mins</p>
+                        </li>
+                        <li><span class="seconds"></span>
+                            <p style="color: #f39c12">Secs</p>
+                        </li>
+                    </ul>
+                </figure>
+           
+    </div>
+    
+    
+    
+<script src="{% static 'main/plugins/jquery.min.js' %}"></script>
+    
+    
+    <script src="{% static 'main/plugins/lightGallery-master/dist/js/lightgallery-all.min.js' %}"></script>
+    
+    <!-- custom scripts-->
+    <script src="{% static 'main/js/main.js' %}"></script>
+</body>
+
+</html>

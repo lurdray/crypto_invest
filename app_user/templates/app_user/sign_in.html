@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'app_user/plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="{% static 'app_user/plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'app_user/dist/css/adminlte.min.css' %}">
+</head> 
+
+
+<body class="hold-transition login-page" style="background-color: #0e1326">
+<style type="text/css">
+    
+    .alert{
+        box-shadow: 5px 5px 10px #111;
+        border: none;
+    }
+    @keyframes show-toast {
+    0%   {bottom: -100%;}
+    20%  {bottom: 50px;}
+    80%  {bottom: 50px;}
+    100% {bottom: -10%;}
+}
+
+.notification.is-toast {
+    position: fixed;
+    bottom: 100%;
+    right: 20px;
+    animation-name: show-toast;
+    animation-duration: 10s;
+}
+@media(max-width: 450px) {
+    h3{
+      font-size: 15px !important;
+    }
+  }
+</style>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="notification is-toast alert alert-{{message.tags}} text-center" role="alert" style="background-color: #9f0101; color: #fff; border-radius: 6px; font-weight: 600;">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+<div class="login-box" style="background-color: #0e1326">
+
+  <!-- /.login-logo -->
+  <div class="card card-outline card-yellow" >
+    <div class="card-header text-center" style="background-color: #343a40">
+      <a href="../../index2.html" class="h1"><b style="color: #f5bd02">Login</b></a>
+    </div>
+    <div class="card-body" style="background-color: #343a40">
+      <p class="login-box-msg" style="color: #f5bd02">Sign in to start your session</p>
+
+      <form method="post">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+          <input style="background-color: #0e1326; color: #fff" name="username" type="email" class="form-control" placeholder="Email">
+          <div class="input-group-append">
+            <div class="input-group-text" style="background-color: #0e1326">
+              <span style="color: #f5bd02;" class="fas fa-envelope"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input style="background-color: #0e1326; color: #fff" name="password1" type="password" class="form-control" placeholder="Password">
+          <div class="input-group-append">
+            <div class="input-group-text" style="background-color: #0e1326">
+              <span class="fas fa-lock" style="color: #f5bd02;"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8">
+            <div class="icheck-primary">
+              <input type="checkbox" id="remember">
+              <label for="remember">
+                Remember Me
+              </label>
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+
+      <!-- /.social-auth-links -->
+      <br /><br /><br />
+      <p class="mb-0">
+        <a href="{% url 'app_user:sign_up' %}" class="text-center">Don't have an account, create one!</a>
+      </p>
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery -->
+<script src="{% static 'app_user/plugins/jquery/jquery.min.j' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'app_user/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'app_user/dist/js/adminlte.min.js' %}"></script>
+</body>
+</html>
