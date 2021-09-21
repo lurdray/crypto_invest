@@ -12,6 +12,7 @@ urlpatterns = [
     path("", include("main.urls")),
     path("", include("admin_app.urls")),
     path("", include("app_user.urls")),
+    path("", include("wallet.urls")),
 
 ]
 

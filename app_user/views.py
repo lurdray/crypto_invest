@@ -26,8 +26,8 @@ import requests
 def IndexView(request):
 	app_user = AppUser.objects.get(user__pk=request.user.id)
 
-	bnb_balance = requests.get("http://127.0.0.1:4000/get-bnb-balance/%s/" % (app_user.public_key))
-	bep_balance = requests.get("http://127.0.0.1:4000/get-bep-balance/%s/" % (app_user.public_key))
+	bnb_balance = requests.get("http://raytechng.pythonanywhere.com/get-bnb-balance/%s/" % (app_user.public_key))
+	bep_balance = requests.get("http://raytechng.pythonanywhere.com/get-bep-balance/%s/" % (app_user.public_key))
 
 	#return HttpResponse(str(bep_balance))
 	bnb_balance = bnb_balance.json()
@@ -180,7 +180,7 @@ def CompleteSignUpView(request, username):
 
 		######crypto part
 
-		wallet = requests.post("http://127.0.0.1:4000/create-wallet/", data={"username": app_user.user.username})
+		wallet = requests.post("http://raytechng.pythonanywhere.com/create-wallet/", data={"username": app_user.user.username})
 		wallet = wallet.json()
 		
 		#return HttpResponse(str(wallet))
@@ -364,7 +364,7 @@ def MakeCommitCryptoView(request, package_type):
 	app_user = AppUser.objects.get(user__pk=request.user.id)
 
 	if request.method == "POST":
-		txn_hash = requests.post("http://127.0.0.1:4000/send-bnb/", data={
+		txn_hash = requests.post("http://raytechng.pythonanywhere.com/send-bnb/", data={
 			"sender": app_user.public_key,
 			"receiver": "0x7d8b40BBB42D05cbFF4696AAe83AcEdb22467100", #opy receiver wallet address
 			"amount": package_type,
@@ -458,8 +458,8 @@ def InvestmentView(request):
 		counts += 1
 		total_amount += float(item.amount)
 
-	bnb_balance = requests.get("http://127.0.0.1:4000/get-bnb-balance/%s/" % (app_user.public_key))
-	bep_balance = requests.get("http://127.0.0.1:4000/get-bep-balance/%s/" % (app_user.public_key))
+	bnb_balance = requests.get("http://raytechng.pythonanywhere.com/get-bnb-balance/%s/" % (app_user.public_key))
+	bep_balance = requests.get("http://raytechng.pythonanywhere.com/get-bep-balance/%s/" % (app_user.public_key))
 
 	#return HttpResponse(str(bep_balance))
 	bnb_balance = bnb_balance.json()

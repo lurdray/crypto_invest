@@ -1,0 +1,153 @@
+{% extends "app_user/base.html" %}
+{% load static %}
+{% block content %}
+
+
+   <!-- Navbar -->
+  {% include 'app_user/nav.html' %}
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  {% include 'app_user/sidebar.html' %}
+<!-- Content Wrapper. Contains page content -->
+
+<style type="text/css">
+
+
+  </style>
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>My Wallet</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">User Wallet</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-3">
+
+            <!-- Profile Image -->
+            <div class="card card-yellow card-outline">
+              <div class="card-body box-profile" style="background-color: #0e1326">
+                <div class="text-center">
+                  <img class="profile-user-img img-fluid img-circle"
+                       src="{{ app_user.profile_photo.url }}"
+                       alt="User profile picture">
+                </div>
+
+                <h3 style="color: #0e1326" class="profile-username text-center">{{ app_user.full_name }}</h3>
+
+                <p style="background-color: #0e1326" class="text-muted text-center">{{ app_user.public_key }}</p>
+
+                <ul class="list-group list-group-unbordered mb-3">
+                  <li style="background-color: #0e1326" class="list-group-item">
+                    <b>BNB Amount</b> <a class="float-right">{{ bnb_balance }}(BNB)</a>
+                  </li>
+                  <li style="background-color: #0e1326" class="list-group-item">
+                    <b>OPY Amount</b> <a class="float-right">{{ bep_balance }}(OPY)</a>
+                  </li>
+                </ul>
+
+                <a href="#" class="btn btn-warning btn-block"><b>See Investments</b></a>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-9">
+            <!-- general form elements -->
+            <div class="card card-warning">
+              <div class="card-header">
+                <h3 class="card-title">My OPY Crypto Wallet</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+                {% csrf_token %}
+                <fieldset>
+                <div class="card-body" style="background-color: #0e1326">
+
+
+                <div class="row">
+                  <h3>{{ app_user.public_key }}</h3>
+                  <br /><br />
+                  <small>Send and receive BNB tokens as well as OPY coins.<br />
+                  Please ensure you have enough coins before sending, also make sure to input the correct binance smart chain wallet address on the input field before clicking "Send".</small>
+                </div>
+                <br /><br />
+
+                  
+                <div class="row">
+
+                    <div class="col-lg-4 col-md-4">
+                      <div class="form-group">
+                        <label for="inputWarning"></label>
+                        <a href="{% url 'wallet:send_bnb' %}" class="btn btn-warning btn-block"><b>Send BNB</b></a>
+                      </div>
+
+                    </div>
+
+
+                    <div class="col-lg-4 col-md-4">
+                      <div class="form-group">
+                        <label for="inputWarning"></label>
+                        <a href="{% url 'wallet:send_opy' %}" class="btn btn-warning btn-block"><b>Send OPY</b></a>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4">
+                      <div class="form-group">
+                        <label for="inputWarning"></label>
+                        <a href="#" class="btn btn-warning btn-block"><b>Receive BNB/OPY</b></a>
+                      </div>
+                    </div>
+                    
+                  </div>
+
+
+                </div>
+                <!-- /.card-body -->
+              </fieldset>
+            </div>
+            <!-- /.card -->
+
+                    
+                </div>
+                <!-- /.tab-content -->
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main Footer -->
+  <footer class="main-footer" style="background-color: #2d3653">
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 3.1.0
+    </div>
+  </footer>
+</div>
+<!-- ./wrapper -->
+
+
+
+{% endblock %}

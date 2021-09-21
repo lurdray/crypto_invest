@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "main",
     "app_user",
     "admin_app",
+    "wallet",
 ]
 
 MIDDLEWARE = [

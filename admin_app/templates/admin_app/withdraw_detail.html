@@ -46,9 +46,21 @@
                 {% csrf_token %}
                 <div class="row">
                   <label>Investor: {{ withdraw.app_user.full_name }}</label><br />
+                </div>
+                <br />
+                <div class="row">
                   <label>Amount: {{ withdraw.amount }}</label><br />
-                  <label>Harvest: {{ withdraw.harvest }}</label><br />
+                </div>
+                <br />
+                <div class="row">
+                  <label>Harvest: {{ withdraw.harvest_amount }}</label><br />
+                  </div>
+                <br />
+                <div class="row">
                   <label>Wallet Address: {{ withdraw.app_user.public_key }}</label><br />
+                  <small>Copy that address and send the harvest amount to it and then,  come back here to activate the payment.</small>
+                </div>
+                <br />
                   <select name="status" id="cars">
                     {% if withdraw.ha_payment_status == True %}
                     <option value="activate" selected>Activate</option>
@@ -59,6 +71,7 @@
                     {% endif %}
                   </select>
                 </div>
+                <br />
 
                 <div class="row">
                   <button type="submit">Submit</button>
