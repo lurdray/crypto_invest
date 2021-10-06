@@ -12,11 +12,17 @@ urlpatterns = [
 
 	path("app/admin/investments/", views.InvestmentsView, name="investments"),
 	path("app/admin/investment-detail/<int:investment_id>/", views.InvestmentDetailView, name="investment_detail"),
-
+	
 	path("app/admin/investment/withdraws/", views.WithdrawsView, name="withdraws"),
 	path("app/admin/investment/withdraw-detail/<int:withdraw_id>/", views.WithdrawDetailView, name="withdraw_detail"),
 
+	path("app/admin/referrals/", views.ReferralsView, name="referrals"),
+	path("app/admin/referral-detail/<int:referral_id>/", views.ReferralDetailView, name="referral_detail"),
+
 	path("app/admin/investments/transaction/", views.TransactionView, name="transaction"),
+
+	path("app/admin/message", views.MessageView, name="message"),
+
 
 	path('sign-out/', views.SignOutView, name="sign_out"),
 

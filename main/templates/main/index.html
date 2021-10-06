@@ -1,473 +1,693 @@
-{% extends 'main/base.html' %}
 {% load static %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="zxx" class="js">
+<head>
+    <meta charset="utf-8">
+<meta name="author" content="Odiaga Raymond and Muritala Ibrahim">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Onpoint Currency | Number 1 blockchain based peer to peer investment platform">
+<!-- Fav Icon  -->
+<link rel="shortcut icon" href="{% static 'images/favicon.png' %}">
+<!-- Site Title  -->
+<title>Onpoint Currency | Number 1 blockchain based peer to peer investment platform</title>
+<!-- Bundle and Base CSS -->
+<link rel="stylesheet" href="{% static 'assets/css/vendor.bundle.css' %}?ver=1930">
+<link rel="stylesheet" href="{% static 'assets/css/style-dark.css' %}?ver=1930" id="changeTheme">
+<!-- Extra CSS -->
+<link rel="stylesheet" href="{% static 'assets/css/theme.css' %}?ver=1930">
 
-<body>
-    <style type="text/css">
-        button.ps-btn{
-            padding: 10px 20px;
-            font-size: 18px;
-            border-radius: 10px;
-            box-shadow: 2px 2px 5px #8b511f;
-            background-color:#8b511f ;
-            color: #161f31 !important;
+
+
+
+</head>
+
+<style type="text/css">
+    @keyframes float{
+        0%, 100%{
+            transform: translateY(0rem);
         }
-
-        button.ps-btn:hover{
-            padding: 10px 20px;
-            font-size: 18px;
-            border-radius: 10px;
-            box-shadow: 2px 2px 5px #f5bd02;
-            background-color: #f5bd02;
-            color: #161f31;
+        50%{
+            transform: translateY(-3.5rem);
         }
-    </style>
-     <div class="ps-block--promotion-header bg--cover" data-background="img/promotions/header-promotion.jpg">
-        <div class="container">
-             <marquee loop="20"><h3 style="color: #2d3653"> WELCOME TO ONPOINTCURRENCY<span> Your number one platform to financial freedom</span></h3></marquee>
+    }
+     @keyframes floatY{
+        0%, 100%{
+            transform: translateY(-3.5rem);
+        }
+        50%{
+            transform: translateY(0rem);
+        }
+    }
+</style>
 
-        </div>
-    </div>
-    <header class="header header--1" data-sticky="true" style="background-color: #2d3653 !important">
-        <div class="header__top"  style="background-color: #2d3653;color: #f5bd02;">
-            <div class="ps-container">
-                <div class="header__left">
-                    <div class="menu--product-categories">
-                        <div class="menu__toggle"><i class="icon-menu"></i><span> Shop by Department</span></div>
-                        <div class="menu__content">
-                            <
-                        </div>
-                    </div><a class="ps-logo" href="index.html"><h3>Logo</h3></a>
-                </div>
-                <div class="header__center">
-                    
-                </div>
-                <div class="header__right">
-                    <div class="header__actions"><a class="header__extra" href="app_user/"><h5 style="margin-top: 12px; color: #f5bd02">Home</h5></a><a class="header__extra" href="#"><h5 style="margin-top: 12px; color: #f5bd02; color: #f5bd02; color: #f5bd02">About</h5></a>
-                        <div class="ps-cart--mini"><a class="header__extra" href="#"><h5 style="margin-top: 12px; color: #f5bd02">Contact</h5></a>
-                            
-                        </div>
-                        <div class="ps-block--user-header">
-                            
-                            <div class="ps-block__right"><a href="{% url 'app_user:sign_up' %}" style="font-size: 14px; background-color: #bba14f; color: #000; padding-top: 10px; padding-bottom: 10px;" class="ps-btn">Signup</a></div>
+
+
+    <body class="nk-body body-wider theme-dark mode-onepage">
+
+    <div class="nk-wrap">
+        <header class="nk-header page-header is-transparent is-sticky is-shrink is-dark" id="header">
+            <!-- Header @s -->
+            <div class="header-main">
+                <div class="header-container container">
+                    <div class="header-wrap">
+                        <!-- Logo @s -->
+                        <div class="header-logo logo animated" data-animate="fadeInDown" data-delay=".65">
+                            <a href="./" class="logo-link">
+                                <img class="logo-dark" src="{% static 'images/logo.png' %}" srcset="{% static 'images/logo2x.png 2x' %}" alt="logo">
+                                <img class="logo-light" src="{% static 'images/logo-white.png' %}" srcset="{% static 'images/logo-white2x.png 2x' %}" alt="logo">
+                            </a>
                         </div>
 
-                        <div class="ps-block--user-header">
-                            
-                            <div class="ps-block__right"><a href="{% url 'app_user:sign_in' %}" style="font-size: 14px; background-color: #bba14f; color: #000; padding-top: 10px; padding-bottom: 10px;" class="ps-btn">Login</a></div>
+                        <!-- Menu Toogle @s -->
+                        <div class="header-nav-toggle">
+                            <a href="#" class="navbar-toggle" data-menu-toggle="example-menu-04">
+                                <div class="toggle-line">
+                                    <span></span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- Menu @s -->
+                        <div class="header-navbar header-navbar-s1">
+                            <nav class="header-menu" id="example-menu-04">
+                                <ul class="menu menu-s2 animated" data-animate="fadeInDown" data-delay=".75">
+                                    <li class="menu-item"><a class="menu-link nav-link" href="#ico">About</a></li>
+                                    <li class="menu-item"><a class="menu-link nav-link" href="#token">Service</a></li>
+                                    <li class="menu-item"><a class="menu-link nav-link" href="#roadmap">How it Works</a></li>
+                                    <li class="menu-item"><a class="menu-link nav-link" href="#partners">Partners</a></li>
+                                    <li class="menu-item"><a class="menu-link nav-link" href="#faqs">FAQS</a></li>
+                                    <li class="menu-item"><a class="menu-link nav-link" href="#contact">Contact</a></li>
+                                </ul>
+                                <ul class="menu-btns animated" data-animate="fadeInDown" data-delay=".85">
+                                    <li><a href="/sign-up/" class="btn btn-rg btn-auto btn-outline btn-grad on-bg-theme btn-round"><span>Get Started</span></a></li>
+                                    <li><a href="/sign-in/"  class="btn btn-rg btn-auto btn-outline btn-grad on-bg-theme btn-round"><span>Login</span></a></li>
+                                </ul>
+                            </nav>
+                        </div><!-- .header-navbar @e -->
+                    </div>                                                
+                </div>
+            </div><!-- .header-main @e -->
+            <!-- Banner @s -->
+            <div class="header-banner bg-theme-dark">
+                <div class="nk-banner">
+                    <div class="banner banner-mask-fix banner-fs banner-single tc-light">
+                        <div class="banner-wrap">
+                            <div class="container">
+                                <div class="row align-items-center justify-content-center gutter-vr-30px">
+                                    <div class="col-lg-6 order-lg-last">
+                                        <div class="banner-gfx banner-gfx-re-s3 animated" data-animate="fadeInUp" data-delay="1.25">
+                                            <img src="{% static 'images/dark/gfx-d-dark.png' %}" alt="header">
+                                            <img class="banner-gfx-icon banner-gfx-icon-1" src="{% static 'images/icons/icon-custom.png' %}" alt="">
+                                            <img class="banner-gfx-icon banner-gfx-icon-2" src="{% static 'images/icons/icon-bitcoin.png' %}" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="banner-caption wide-auto text-center text-lg-left">
+                                            <div class="cpn-head mt-0">
+                                                <h1 class="title title-xl-2 title-semibold animated" data-animate="fadeInUp" data-delay="1.35">Onpoint Currency!</h1>
+                                            </div>
+                                            <div class="cpn-text cpn-text-s1">
+                                                <p class="lead animated" data-animate="fadeInUp" data-delay="1.45">Onpoint Currency was created with a big idea: to revolutionize the outdated peer to peer system and build a decentralized & secure investment system for individuals and businesses.</p>
+                                            </div>
+                                            <div class="cpn-btns">
+                                                <ul class="btn-grp animated" data-animate="fadeInUp" data-delay="1.55">
+                                                    <li><a href="/sign-up/" class="btn btn-md btn-grad btn-round">Sign up to join</a></li>
+                                                    <li><a href="/sign-in/" class="btn btn-md btn-grad btn-grad-alternet btn-round">Sign in</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="cpn-social">
+                                                <ul class="social">
+                                                    <li class="animated" data-animate="fadeInUp" data-delay="1.65"><a href="#"><em class="social-icon fab fa-facebook-f"></em></a></li>
+                                                    <li class="animated" data-animate="fadeInUp" data-delay="1.7"><a href="#"><em class="social-icon fab fa-twitter"></em></a></li>
+                                                    <li class="animated" data-animate="fadeInUp" data-delay="1.75"><a href="#"><em class="social-icon fab fa-youtube"></em></a></li>
+                                                    <li class="animated" data-animate="fadeInUp" data-delay="1.8"><a href="#"><em class="social-icon fab fa-github"></em></a></li>
+                                                    <li class="animated" data-animate="fadeInUp" data-delay="1.85"><a href="#"><em class="social-icon fab fa-bitcoin"></em></a></li>
+                                                    <li class="animated" data-animate="fadeInUp" data-delay="1.9"><a href="#"><em class="social-icon fab fa-medium-m"></em></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div><!-- .col -->
+                                </div><!-- .row -->
+                            </div>
                         </div>
                     </div>
-                </div>
+                </div><!-- .nk-banner -->
+                <div class="nk-ovm mask-c-dark shape-v mask-contain-bottom"></div>
+                
+                <!-- Place Particle Js -->
+                <div id="particles-bg" class="particles-container particles-bg" data-pt-base="#00c0fa" data-pt-base-op=".3" data-pt-line="#2b56f5" data-pt-line-op=".5" data-pt-shape="#00c0fa" data-pt-shape-op=".2"></div>
             </div>
-        </div>
-    </header>
-
-    <header class="header header--mobile" data-sticky="true">
-        <div class="header__top">
-            
-            <div>
-                <marquee> Welcome to Onpointcurrency blockchain based Investment Platform !</marquee>
-            </div>
-        </div>
-        <div class="ps-search--mobile" style="background-color: #2d3653">
-            <marquee style="color: #f5bd02">WELCOME TO ONPOINTCURRENCY<span> Your number one platform to financial freedom</span></marquee>
-        </div>
-        <div class="navigation--mobile" style="background-color: #2d3653">
-            <div class="navigation__left"><a class="ps-logo" href="index.html"><h5  style="color: #f5bd02">OnpointxCurrency</h5></a></div>
-            <div class="ps-block--user-header">
-                <div class="ps-block__left"><i style="color: #f5bd02" class="icon-user"></i></div>
-                <div class="ps-block__right"><a href="{% url 'app_user:sign_up' %}" style="color: #f5bd02">Sign up</a><a href="{% url 'app_user:sign_in' %}" style="color: #f5bd02">Sign In</a></div>
-            </div>
-        </div>
-        
-    </header>
-    <nav class="navigation--mobile-product"><a class="ps-btn ps-btn--black" href="{% url 'app_user:sign_up' %}" style="background-color: #0e1326; color: #f5bd02">SingUp</a><a class="ps-btn" href="checkout.html" style="background-color: #8b511f; color: #0e1326">Contact</a><a style="padding-left: 10px; padding-right: 10px; background-color: #0e1326; color: #f5bd02" class="ps-btn" href="{% url 'app_user:sign_in' %}">SignIn</a></nav>
-    <div class="ps-panel--sidebar" id="cart-mobile">
-        
-    </div>
+            <!-- .header-banner @e -->
+        </header>
     
-    
-    <div class="ps-panel--sidebar" id="search-sidebar">
-        <div class="ps-panel__header">
-            <form class="ps-form--search-mobile" action="index.html" method="get">
-                <div class="form-group--nest">
-                    <input class="form-control" type="text" placeholder="Search something...">
-                    <button><i class="icon-magnifier"></i></button>
-                </div>
-            </form>
-        </div>
-        <div class="navigation__content"></div>
-    </div>
-    <style type="text/css">
-        @keyframes float{
-    0%, 100%{
-        transform: translateY(0rem);
-    }
-    50%{
-        transform: translateY(-3.5rem);
-    }
-}
-    </style>
-    
-    <div class="ps-download-app" style="background-color: #bba14f; padding-bottom: 30px">
-            <div class="ps-container" style="background-color: #bba14f">
-                <div class="ps-block--download-app" style="background-color: #bba14f">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 ">
-                                <div class="ps-block__thumbnail"><img style=" animation: float 3s linear infinite" src="{% static 'main/image/unnamed.png' %}" alt=""></div>
+        <main class="nk-pages">
+            <section class="section mask-c-blend-dark bg-theme-dark-alt tc-light ov-h" id="ico">
+                <div class="container">
+                    <!-- Block @s -->
+                    <div class="nk-block nk-block-text-wrap">
+                        <div class="row align-items-center justify-content-center justify-content-md-between gutter-vr-30px">
+                            <div class="col-mb-9 col-sm-7 col-md-6 col-lg-5 order-md-last">
+                                <div class="nk-block-img animated" data-animate="fadeInUp" data-delay=".1">
+                                     <img style=" animation: floatY 3s linear infinite"  src="{% static 'images/kisspng-blockchain-initial-coin-offering-cryptocurrency-co-5cb98bb85a0719.4629120715556638003688 (2).png' %}" alt="gfx">
+                                    
+                                </div>
                             </div>
-                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 ">
-                                <div class="ps-block__content">
-                                    <h2 style="color: #0e1326; font-size: 900">Onpoint Currency!</h2>
-                                     <h3 style="color: #0e1326; font-size: 900">Number 1 blockchain based peer to peer investment platform</h3>
-                                    <p style="color: #0e1326">Onpoint Currency was created with a big idea: to revolutionize the outdated peer to peer system and build a decentralized and secure investment system for individuals and businesses.     </p>
-                                    <form class="ps-form--download-app" action="do_action" method="post">
-                                        <div class="form-group--nest">
-                                            <input class="form-control" type="Email" placeholder="Email Address">
-                                            <button class="ps-btn">Subscribe</button>
+                            <div class="col-sm-10 col-md-6 text-center text-md-left">
+                                <div class="nk-block-text">
+                                    <h2 class="title animated" data-animate="fadeInUp" data-delay=".2">We’ve built a platform <br>to invest and grow wealth</h2>
+                                    <p class="lead animated" data-animate="fadeInUp" data-delay=".3">We’re reinventing the global equity blockchian – that is secure, smart and easy-to-use platform, and completely disrupting the way businesses raise capital and the way investments are made.</p>
+                                    <a href="https://www.youtube.com/watch?v=SSo_EIwHSd4" class="video-popup btn-play-wrap animated" data-animate="fadeInUp" data-delay=".4">
+                                        <div class="btn-play btn-play-sm btn-play-s2">
+                                            <em class="btn-play-icon"></em>
+                                        </div>
+                                        <div class="btn-play-text">
+                                            <span class="text-sm">Watch Video</span>
+                                            <span class="text-xs">What and How it work</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div><!-- .row -->
+                    </div><!-- .block @e -->
+                </div>
+            </section>
+            <!-- // -->
+            <section class="section bg-theme-dark-alt tc-light py-0 ov-h">
+                <div class="container">
+                    <!-- Block @s -->
+                    <div class="nk-block nk-block-features-2">
+                        <div class="row align-items-center gutter-vr-30px justify-content-center justify-content-md-between">
+                            <div class="col-mb-9 col-sm-7 col-md-6 col-lg-5">
+                                <div class="gfx py-4 animated" data-animate="fadeInUp" data-delay=".1">
+                                   <img src="{% static 'images/light/gfx-z-a.png' %}" alt="app">
+                                </div>
+                            </div><!-- .col -->
+                            <div class="col-sm-10 col-md-6 text-center text-md-left">
+                                <!-- Section Head @s -->
+                                <div class="nk-block-text">
+                                    <h4 class="title title-lg animated" data-animate="fadeInUp" data-delay=".2">What is Onpoint Currency ?</h4>
+                                    <p class="lead animated" data-animate="fadeInUp" data-delay=".3">Onpoint Crypto is a platform for the future of investment</p>
+                                    <p class="animated" data-animate="fadeInUp" data-delay=".4">While existing solutions offer to solve just one problem at a time, our team is up to build a secure, useful, &amp; easy-to-use product based on private blockchain based investment platform. It will include easy cryptocurrency payments integration, and even a digital arbitration system.</p>
+                                    <p class="animated" data-animate="fadeInUp" data-delay=".5">At the end, Our aims to integrate all companies, employees, and business assets into a unified blockchain ecosystem, which will make business truly efficient, transparent, and reliable.</p>
+                                </div>
+                            </div>
+                        </div><!-- .row -->
+                    </div><!-- .block @e -->
+                </div>
+            </section>
+            <!-- // -->
+            <section class="section bg-theme-dark-alt tc-light">
+                <div class="container">
+                    <div class="section-head text-center wide-auto-sm tc-light">
+                        <div class="section-head-line">
+                            <span class="line-1"></span><span class="line-2"></span><span class="line-3"></span><span class="line-4"></span>
+                            <span class="line-5"></span><span class="line-6"></span><span class="line-7"></span><span class="line-8"></span>
+                        </div>
+                        <h2 class="title title-s4 animated" data-animate="fadeInUp" data-delay=".1" title="INVEST">Invest</h2>
+                        <p class="animated" data-animate="fadeInUp" data-delay=".2">Join our platform where millions of investors around the world earn and become financially independent</p>
+                    </div>
+                    <!-- Block @s -->
+                    <div class="nk-block nk-block-text-wrap">
+                        <div class="row align-items-center justify-content-center justify-content-md-between gutter-vr-30px">
+                            <div class="col-mb-9 col-sm-7 col-md-6">
+                                <div class="nk-block-img animated" data-animate="fadeInUp" data-delay=".3">
+                                    <img style=" animation: floatY 3s linear infinite" src="{% static 'images/dark/gfx-z-c.png' %}" alt="app">
+                                </div>
+                            </div>
+                            <div class="col-sm-10 col-md-6 col-lg-5">
+                                <div class="nk-block-text ml-lg-3 ml-xl-0">
+                                    <p class="animated" data-animate="fadeInUp" data-delay=".4">Building trust with your users starts with getting to know them better. A more complete understanding of your user base is only possible with the right identity and reputation tools.We implement painless, end-to-end Know Your Customer processes to ensure transparency and user trust.</p>
+                                    <ul class="list list-dot pdb-r">
+                                        <li class="animated" data-animate="fadeInUp" data-delay=".5">Juicy Interest Rate</li>
+                                        <li class="animated" data-animate="fadeInUp" data-delay=".55">100% secure payment</li>
+                                        <li class="animated" data-animate="fadeInUp" data-delay=".65">24/7 Dedicated support</li>
+                                        <li class="animated" data-animate="fadeInUp" data-delay=".7">Easy Tracking of your earning</li>
+                                    </ul>
+                                    <ul class="btn-grp justify-content-center justify-content-md-start">
+                                        <li class="animated" data-animate="fadeInUp" data-delay=".85"><a href="#" class="btn btn-grad btn-round btn-md">Get the app now</a></li>
+                                        <li class="animated" data-animate="fadeInUp" data-delay=".95">
+                                            <ul class="btn-grp gutter-15px">
+                                                <li><a href="#"><em class="fab fa-apple"></em></a></li>
+                                                <li><a href="#"><em class="fab fa-android"></em></a></li>
+                                                <li><a href="#"><em class="fab fa-windows"></em></a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+
+                        </div><!-- .row -->
+                    </div><!-- .block @e -->
+                    <p class="animated" data-animate="fadeInUp" data-delay=".4" style="margin-top: 20px">Trust is our currency. We are committed to the security of your money and the protection of your account. That is how we earn your trust.</p>
+                </div>
+            </section>
+            <!-- // -->
+            <section class="section section-tokensale tc-light bg-theme-dark" id="token">
+                <!-- Block @s -->
+                <div class="container">
+                    <div class="section-head text-center wide-auto-sm">
+                        <h2 class="title title-s4 animated" data-animate="fadeInUp" data-delay=".1" title="SECURE">transparent, and secure</h2>
+                        <p class="animated" data-animate="fadeInUp" data-delay=".2">We’re serious about security and ensure your personal information is fully encrypted and securely stored. We guard all of your personal information with 256-bit encryption and other cutting-edge security technologies.</p>
+                    </div>
+                    <div class="nk-block nk-block-token mgb-m30">
+                        <div class="row align-items-center justify-content-between gutter-vr-50px">
+                            <div class="col-lg-6">
+                                <div class="row gutter-vr-30px">
+                                    <div class="col-sm-6">
+                                        <div class="stage-info animated" data-animate="fadeInUp" data-delay=".3">
+                                            <h6 class="title title-s6 title-xs-s2">Juicy Interest Rate</h6>
+                                            <p>What is betty than a Juicy interest rate?</p>
+                                        </div>
+                                    </div><!-- .col  -->
+                                    <div class="col-sm-6">
+                                        <div class="stage-info animated" data-animate="fadeInUp" data-delay=".4">
+                                            <h6 class="title title-s6 title-xs-s2">Easy Tracking</h6>
+                                            <p>Keep tabs of you earnings</p>
+                                        </div>
+                                    </div><!-- .col  -->
+                                    <div class="col-sm-6">
+                                        <div class="stage-info animated" data-animate="fadeInUp" data-delay=".5">
+                                            <h6 class="title title-s6 title-xs-s2">Secure Payment</h6>
+                                            <p>100% secure payment</p>
+                                        </div>
+                                    </div><!-- .col  -->
+                                    <div class="col-sm-6">
+                                        <div class="stage-info animated" data-animate="fadeInUp" data-delay=".6">
+                                            <h6 class="title title-s6 title-xs-s2">24/7 Support</h6>
+                                            <p>Round the clock Dedicated support</p>
+                                        </div>
+                                    </div><!-- .col  -->
+                                    
+                                </div><!-- .row  -->
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="token-status token-status-s5 bg-theme-alt round no-bd animated" data-animate="fadeInUp" data-delay=".9">
+                                    <div class="token-box token-box-s3">
+                                        <div class="countdown-s3 countdown-s4 countdown" data-date="2021/08/10"></div>
+                                    </div>
+                                    <div class="token-action">
+                                        <a class="btn btn-md btn-grad btn-grad-alternet btn-round" href="/sign-up/">Join Now &amp; Start Earning</a>
+                                    </div>
+                                    <ul class="icon-list">
+                                        <li><em class="fab fa-bitcoin"></em></li>
+                                        <li><em class="fas fa-won-sign"></em></li>
+                                        <li><em class="fab fa-cc-visa"></em></li>
+                                        <li><em class="fab fa-cc-mastercard"></em></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- .block @e -->
+                    <div class="nk-block">
+                        <div class="row justify-content-center gutter-vr-40px">
+                            <div class="col-md-6 col-mb-8">
+                                <div class="single-chart">
+                                    <h3 class="mgb-l text-center title-lg animated" data-animate="fadeInUp" data-delay=".1"></h3>
+                                    <div class="chart animated" data-animate="fadeInUp" data-delay=".2">
+                                        <img style=" animation: float 3s linear infinite" src="https://digits.io/images/header-image-blue.png" alt="chart">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-mb-8">
+                                <div class="single-chart">
+                                    <h3 class="mgb-l text-center title-lg animated" data-animate="fadeInUp" data-delay=".3"></h3>
+                                    <div class="chart animated" data-animate="fadeInUp" data-delay=".4">
+                                       <img style=" animation: floatY 3s linear infinite" width="500" src="{% static 'images/kisspng-cryptocurrency-initial-coin-offering-business-dece-5c9de2818bc4c3.8257488115538510095725.png' %}" alt="chart">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- .block @e -->
+                </div>
+            </section>
+            <!-- // -->
+            <section class="section bg-theme tc-light section-connect" id="roadmap">
+                <div class="container ov-h">
+                    <div class="section-head text-center wide-auto-sm">
+                        <h2 class="title title-s4 animated" data-animate="fadeInUp" data-delay=".1" title="WORK">HOW IT WORKS</h2>
+                    </div><!-- .section-head @e -->
+                </div>
+                    <!-- Block @s -->
+                <div class="nk-block ov-h">
+                    <div class="container">
+                        <div class="roadmap-list animated" data-animate="fadeInUp" data-delay=".2">
+                            <div class="roadmap-item roadmap-item-sm roadmap-done">
+                                <div class="roadmap-innr">
+                                    <h6 class="roadmap-title roadmap-title-s2">Register</h6>
+                                    <p>Register with a one time registration fee of 5$ in busd to our crypto account</p>
+                                    <p>Submit proof of payment.</p>
+                                </div>
+                            </div><!-- .roadmap-item -->
+                            <div class="roadmap-item roadmap-done">
+                                
+                            </div>
+                            <div class="roadmap-item roadmap-item-lg">
+                                <div class="roadmap-innr">
+                                    <h6 class="roadmap-title roadmap-title-s2">Commit</h6>
+                                    <p>Select and commit to your preferred package from our list of packages</p>
+                                </div>
+                            </div>
+                            <div class="roadmap-item">
+                                
+                            </div>
+                            <div class="roadmap-item roadmap-item-sm">
+                                <div class="roadmap-innr">
+                                    <h6 class="roadmap-title roadmap-title-s2">Approval</h6>
+                                    <p>Seemless, payment fast-approval by the software</p>
+                                </div>
+                            </div>
+                            <div class="roadmap-item">
+                                
+                            </div>
+                            <div class="roadmap-item roadmap-item-lg">
+                                <div class="roadmap-innr">
+                                    <h6 class="roadmap-title roadmap-title-s2">Relax and get paid</h6>
+                                    <p>Sit back, relax & let your money work for you all day, everyday</p>
+                                </div>
+                            </div>
+                            <div class="roadmap-item">
+                                
+                            </div>
+                            <div class="roadmap-item roadmap-item-sm">
+                                <div class="roadmap-innr">
+                                    <h6 class="roadmap-title roadmap-title-s2">Referrer Bonuses</h6>
+                                    <p>Refer a friend and earn</p>
+                                </div>
+                            </div>
+                            <div class="roadmap-item">
+                               
+                            </div>
+                            <div class="roadmap-item roadmap-item-lg">
+                                <div class="roadmap-innr">
+                                    <h6 class="roadmap-title roadmap-title-s2">Easy piecy</h6>
+                                    <p>ready to earn now? just follow the steps </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- .block @e -->
+            </section>
+            
+            <section class="section bg-theme-dark tc-light" id="partners">
+                <div class="container">
+                    <!-- Section Head @s -->
+                    <div class="section-head text-center wide-auto-sm tc-light">
+                        <h2 class="title title-s4 animated" data-animate="fadeInUp" data-delay=".1" title="Partners">ICO Crypto Partners</h2>
+                    </div><!-- .section-head @e -->
+                    <!-- Block @s -->
+                    <div class="nk-block block-partners">
+                        <ul class="partner-list flex-wrap">
+                            <li class="partner-logo-lg animated" data-animate="fadeInUp" data-delay=".2"><img src="{% static 'images/partners/a-md.png' %}" alt="partner"></li>
+                            <li class="partner-logo-lg animated" data-animate="fadeInUp" data-delay=".3"><img src="{% static 'images/partners/b-md.png' %}" alt="partner"></li>
+                            <li class="partner-logo-lg animated" data-animate="fadeInUp" data-delay=".4"><img src="{% static 'images/partners/c-md.png' %}" alt="partner"></li>
+                            <li class="partner-logo-lg animated" data-animate="fadeInUp" data-delay=".5"><img src="{% static 'images/partners/d-md.png' %}" alt="partner"></li>
+                            <li class="partner-logo-lg animated" data-animate="fadeInUp" data-delay=".6"><img src="{% static 'images/partners/e-md.png' %}" alt="partner"></li>
+                        </ul>
+                    </div>
+                    <!-- Block @e -->
+                </div>
+            </section>
+            <!-- // -->
+            <section class="section bg-theme-alt tc-light section-connect" id="media-partner">
+               <div class="transform-line"></div>
+                <div class="container">
+                    <!-- Section Head @s -->
+                    <div class="section-head wide-auto-sm text-center">
+                        <h2 class="title-xs animated" data-animate="fadeInUp" data-delay=".1">As seen in</h2>
+                    </div><!-- .section-head @e -->
+                    <!-- Block @s -->
+                    <div class="nk-block block-partners">
+                        <ul class="partner-list partner-list-s2 flex-wrap">
+                            <li class="partner-logo-s2 animated" data-animate="fadeInUp" data-delay=".2"><img src="{% static 'images/partners/a-xs.png' %}" alt="partner"></li>
+                            <li class="partner-logo-s2 animated" data-animate="fadeInUp" data-delay=".25"><img src="{% static 'images/partners/b-xs.png' %}" alt="partner"></li>
+                            <li class="partner-logo-s2 animated" data-animate="fadeInUp" data-delay=".3"><img src="{% static 'images/partners/c-xs.png' %}" alt="partner"></li>
+                            <li class="partner-logo-s2 animated" data-animate="fadeInUp" data-delay=".35"><img src="{% static 'images/partners/d-xs.png' %}" alt="partner"></li>
+                            <li class="partner-logo-s2 animated" data-animate="fadeInUp" data-delay=".4"><img src="{% static 'images/partners/e-xs.png' %}" alt="partner"></li>
+                            <li class="partner-logo-s2 animated" data-animate="fadeInUp" data-delay=".45"><img src="{% static 'images/partners/f-xs.png' %}" alt="partner"></li>
+                            <li class="partner-logo-s2 animated" data-animate="fadeInUp" data-delay=".5"><img src="{% static 'images/partners/a-sm.png' %}" alt="partner"></li>
+                            <li class="partner-logo-s2 animated" data-animate="fadeInUp" data-delay=".55"><img src="{% static 'images/partners/b-sm.png' %}" alt="partner"></li>
+                            <li class="partner-logo-s2 animated" data-animate="fadeInUp" data-delay=".6"><img src="{% static 'images/partners/c-sm.png' %}" alt="partner"></li>
+                            <li class="partner-logo-s2 animated" data-animate="fadeInUp" data-delay=".65"><img src="{% static 'images/partners/d-sm.png' %}" alt="partner"></li>
+                        </ul>
+                    </div>
+                    <!-- Block @e -->
+                </div>
+            </section>
+            
+            <section class="section bg-theme tc-light pb-0" id="faqs">
+                <div class="container">
+                    <div class="section-head text-center wide-auto-sm">
+                        <h2 class="title title-s4 animated" data-animate="fadeInUp" data-delay=".1" title="FAQS">Frequently Asked Question</h2>
+                        <p class="animated" data-animate="fadeInUp" data-delay=".2">Below we’ve provided a bit on onpoint currency and few others. If you have any other questions, please get in touch using the contact form below.</p>
+                    </div><!-- .section-head @e -->
+                    <!-- Block @s -->
+                    <div class="nk-block">
+                        <div class="row justify-content-center">
+                            <div class="col-xl-8 col-lg-10">
+                                <ul class="nav tab-nav tab-nav-line mgb-r animated" data-animate="fadeInUp" data-delay=".3">
+                                    <li><a class="active" data-toggle="tab" href="#general-questions-19">General</a></li>
+                                    <li><a data-toggle="tab" href="#ico-questions-19">Payment &amp; Referral</a></li>
+                                    
+                                </ul>
+                                <div class="tab-content animated" data-animate="fadeInUp" data-delay=".4">
+                                    <div class="tab-pane fade show active" id="general-questions-19">
+                                        <div class="accordion accordion-faq" id="faq-67">
+                                            <div class="accordion-item accordion-item-s4 bg-theme-alt">
+                                                <h5 class="accordion-title" data-toggle="collapse" data-target="#faq-67-1">
+                                                    What is OnpointCurrency? 
+                                                    <span class="accordion-icon accordion-icon-s2"></span>
+                                                </h5>
+                                                <div id="faq-67-1" class="collapse show" data-parent="#faq-67">
+                                                    <div class="accordion-content">
+                                                        <p>OnpointCurrency is a blockchain based platform owned by a Nigerian based Italian enthusiast known as Adrano Fonara and it is the first blockchain based P2P platform with a unique mission to help enrich people by creating a secure decentralized investment system<br>OnpointCurrency helps make investing seamless and transparent. OnpointCurrency eliminates the stress and planning required to invest on a regular basis through its automated and easy-to-use platform.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-item accordion-item-s4 bg-theme-alt">
+                                                <h5 class="accordion-title collapsed" data-toggle="collapse" data-target="#faq-67-2">
+                                                    How Safe is OnpointCurrency? 
+                                                    <span class="accordion-icon accordion-icon-s2"></span>
+                                                </h5>
+                                                <div id="faq-67-2" class="collapse" data-parent="#faq-67">
+                                                    <div class="accordion-content">
+                                                        <p>OnpointCurrency was developed with the security of your payment data in mind.<br>Critical customer data is encrypted and securely stored.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-item accordion-item-s4 bg-theme-alt">
+                                                <h5 class="accordion-title collapsed" data-toggle="collapse" data-target="#faq-67-3">
+                                                    How safe is my money?
+                                                    <span class="accordion-icon accordion-icon-s2"></span>
+                                                </h5>
+                                                <div id="faq-67-3" class="collapse" data-parent="#faq-67">
+                                                    <div class="accordion-content">
+                                                        <p>We have multiple security and safety layers embedded in the Cowrywise experience: from the security of our technology platform to carefully selected asset classes. Here are few of them:</p>
+
+                                                        <p><b>Bank Level Security:</b> Our platform was carefully developed to ensure security of your data electronically. All cards and bank data are encrypted to prevent unauthorised access to sensitive information.</p>
+
+                                                        <p><b>Decentralized distribution:</b> OnpointCurrency platforms do not keep currencies of their customers. Instead, they peer users with each other. It enables them to conduct transactions directly.</p>
+
+                                                        <p><b>Know Your Customer:</b> Building trust with your users starts with getting to know them better. A more complete understanding of your user base is only possible with the right identity and reputation tools.We implement painless, end-to-end Know Your Customer processes to ensure transparency and user trust.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-item accordion-item-s4 bg-theme-alt">
+                                                <h5 class="accordion-title collapsed" data-toggle="collapse" data-target="#faq-67-4">
+                                                    How does OnpointCurrency Work? 
+                                                    <span class="accordion-icon accordion-icon-s2"></span>
+                                                </h5>
+                                                <div id="faq-67-4" class="collapse" data-parent="#faq-67">
+                                                    <div class="accordion-content">
+                                                        <p>Onpoint currency works in four simple steps for better user intaraction.</p>
+                                                        <p><b>Validation:</b> this comprises the sign up, on-time payment and KYC.</p>
+                                                        <p><b>Commit: </b>this stage immidiately follows after the the user has been verified and validated. in the state the user selects a package of his choice and after approval by the admin this user will be peer to another user to make his commit to, with a deadline for payment.</p>
+                                                        <p><b>Withdrawal:</b> after this user has successful made his commit, it's his turn to earn, in this stage a user will be peered to make commit to him also with a deadline.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ico-questions-19">
+                                        <div class="accordion accordion-faq" id="faq-68">
+                                            <div class="accordion-item accordion-item-s4 bg-theme-alt">
+                                                <h5 class="accordion-title" data-toggle="collapse" data-target="#faq-68-1">
+                                                    How long will it take before I get paid ?
+                                                    <span class="accordion-icon accordion-icon-s2"></span>
+                                                </h5>
+                                                <div id="faq-68-1" class="collapse show" data-parent="#faq-68">
+                                                    <div class="accordion-content">
+                                                        <p>Users can withdraw their profits and capital in 7days time and reinvest back with 1.5% profit, or they can keep capital locked for 30days and get 2.5% every 7days</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-item accordion-item-s4 bg-theme-alt">
+                                                <h5 class="accordion-title collapsed" data-toggle="collapse" data-target="#faq-68-2">
+                                                    What is the point of the one-time registration ?
+                                                    <span class="accordion-icon accordion-icon-s2"></span>
+                                                </h5>
+                                                <div id="faq-68-2" class="collapse" data-parent="#faq-68">
+                                                    <div class="accordion-content">
+                                                        <p>One time registration fee of 5$ is to ensure that only serious and reliable users will be registered on the platform, if you know you stand the risk of losing you 5$ if you dont make payment within your alocated time, you'll be compelled to situp and meet your dealine.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-item accordion-item-s4 bg-theme-alt">
+                                                <h5 class="accordion-title collapsed" data-toggle="collapse" data-target="#faq-68-3">
+                                                    What if i don't recieve payment after the allocated time ?
+                                                    <span class="accordion-icon accordion-icon-s2"></span>
+                                                </h5>
+                                                <div id="faq-68-3" class="collapse" data-parent="#faq-68">
+                                                    <div class="accordion-content">
+                                                        <p>Such occurance would be rare, however, if in any case this happened it will be fixed immediately our attention is called to it</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-item accordion-item-s4 bg-theme-alt">
+                                                <h5 class="accordion-title collapsed" data-toggle="collapse" data-target="#faq-68-4">
+                                                    Referral
+                                                    <span class="accordion-icon accordion-icon-s2"></span>
+                                                </h5>
+                                                <div id="faq-68-4" class="collapse" data-parent="#faq-68">
+                                                    <div class="accordion-content">
+                                                        <p>xxx</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- .col -->
+                        </div><!-- .row -->
+                    </div><!-- .block @e -->
+                </div>
+            </section>
+            <!-- // -->
+            <section class="section section-contact bg-theme tc-light" id="contact">
+                <div class="container">
+                    <div class="section-head text-center wide-auto-sm">
+                        <h2 class="title title-s4 animated" data-animate="fadeInUp" data-delay=".1" title="Contact">Contact ICO Crypto</h2>
+                        <p class="animated" data-animate="fadeInUp" data-delay=".2">Any question? Reach out to us and we’ll get back to you shortly.</p>
+                    </div><!-- .section-head @e -->
+                    <!-- Block @s -->
+                    <div class="nk-block block-contact">
+                        <div class="row justify-content-center text-center">
+                            <div class="col-xl-8 col-lg-10">
+                                <ul class="contact-list contact-list-s1 flex-wrap flex-md-nowrap pdb-l">
+                                    <li class="animated" data-animate="fadeInUp" data-delay=".3">
+                                        <em class="contact-icon fas fa-phone"></em>
+                                        <div class="contact-text">
+                                            <span>+44 0123 4567</span>
+                                        </div>
+                                    </li>
+                                    <li class="animated" data-animate="fadeInUp" data-delay=".4">
+                                        <em class="contact-icon fas fa-envelope"></em>
+                                        <div class="contact-text">
+                                            <span>info@company.com</span>
+                                        </div>
+                                    </li>
+                                    <li class="animated" data-animate="fadeInUp" data-delay=".5">
+                                        <em class="contact-icon fas fa-paper-plane"></em>
+                                        <div class="contact-text">
+                                            <span>Join us on Telegram</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div><!-- .col -->
+                            <div class="col-xl-8 col-lg-10">
+                                <div class="contact-wrap p-0">
+                                    <form id="contact-form-01" method="post">
+                                        {% csrf_token %}
+                                        <div class="field-item field-item-center animated" data-animate="fadeInUp" data-delay=".6">
+                                            <input name="full_name" type="text" class="input-line required">
+                                            <label class="field-label field-label-line">Your Name</label>
+                                        </div>
+                                        <div class="field-item field-item-center animated" data-animate="fadeInUp" data-delay=".7">
+                                            <input name="email" type="email" class="input-line input-line-center required email">
+                                            <label class="field-label field-label-line">Your Email</label>
+                                        </div>
+                                        <div class="field-item field-item-center animated" data-animate="fadeInUp" data-delay=".8">
+                                            <textarea name="message" class="input-line input-line-center input-textarea required"></textarea>
+                                            <label class="field-label field-label-line">Your Message</label>
+                                        </div>
+                                        <input type="text" class="d-none" name="form-anti-honeypot" value="">
+                                        <div class="field-wrap animated" data-animate="fadeInUp" data-delay=".9">
+                                            <button type="submit" class="btn btn-round btn-lg btn-grad">Submit</button>
+                                            <div class="form-results"></div>
                                         </div>
                                     </form>
-                                    <p class="download-link"><a href="#"><img src="{% static 'main/img/google-play.png' %}" alt=""></a><a href="#"><img src="{% static 'main/img/app-store.png' %}" alt=""></a></p>
                                 </div>
+                            </div><!-- .col -->
+                        </div><!-- .row -->
+                    </div><!-- .block @e -->
+                </div>
+            </section>
+            <!-- // -->
+        </main>
+        <footer class="nk-footer bg-theme-alt section-connect">
+            <div class="section section-m pb-0 tc-light ov-h">
+                <div class="container py-4">
+                    <!-- Block @s -->
+                    <div class="nk-block pb-lg-5">
+                        <div class="row justify-content-center text-center">
+                            <div class="col-lg-6 col-md-9">
+                                <div class="wide-auto-sm section-head section-head-sm pdb-r">
+                                    <h4 class="title title-md animated" data-animate="fadeInUp" data-delay=".1">Don't miss out, Stay updated</h4>
+                                </div>
+                                <form action="form/subscribe.php" class="nk-form-submit" method="post">
+                                    <div class="field-inline field-inline-round field-inline-s2-sm bg-theme-dark-alt shadow-soft animated" data-animate="fadeInUp" data-delay=".2">
+                                        <div class="field-wrap">
+                                            <input class="input-solid input-solid-md required email" type="text" name="contact-email" placeholder="Enter your email">
+                                            <input type="text" class="d-none" name="form-anti-honeypot" value="">
+                                        </div>
+                                        <div class="submit-wrap">
+                                            <button class="btn btn-md btn-round btn-grad h-100">Subscribe</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-results"></div>
+                                </form>
                             </div>
                         </div>
-                    </div>
+                    </div><!-- .block @e -->
                 </div>
+                <div class="nk-ovm shape-contain shape-center-top shape-p"></div>
             </div>
-        </div> 
-        <div class="ps-site-features" style=" background: linear-gradient(to right,#2d3653, #f5bd02 );">
-            <div class="container">
-                <div class="ps-block--site-features ps-block--site-features-2">
-                    <div class="ps-block__item">
-                        <div class="ps-block__left"><i style="color: #fff" class="icon-rocket"></i></div>
-                        <div class="ps-block__right">
-                            <h4 style="color: #fff">Mouth Watery Interest</h4>
-                            
-                        </div>
-                    </div>
-                    <div class="ps-block__item">
-                        <div class="ps-block__left"><i style="color: #fff" class="icon-sync"></i></div>
-                        <div class="ps-block__right">
-                            <h4 style="color: #fff">Easy Tracking</h4>
-                            <p style="color: #fff">Keep tabs of you earnings</p>
-                        </div>
-                    </div>
-                    <div class="ps-block__item">
-                        <div class="ps-block__left"><i  style="color: #fff" class="icon-credit-card"></i></div>
-                        <div class="ps-block__right">
-                            <h4  style="color: #fff">Secure Payment</h4>
-                            <p  style="color: #fff">100% secure payment</p>
-                        </div>
-                    </div>
-                    <div class="ps-block__item">
-                        <div class="ps-block__left"><i  style="color: #fff" class="icon-bubbles"></i></div>
-                        <div class="ps-block__right">
-                            <h4  style="color: #fff">24/7 Support</h4>
-                            <p  style="color: #fff">Dedicated support</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="ps-section--vendor ps-vendor-about" style="background-color: #0e1326; color: #8b511f">
-            <div class="container">
-                <div class="ps-section__header" >
-                    <p style="color: #8b511f">WHY INVEST ON ONPOINTCURRENCY</p>
-                    <h4 style="color: #8b511f">Join our platform where nearly 50 million investors around<br> the world earn and become financially independent</h4>
-                </div>
-                <div class="ps-section__content">
-                    <div class="row">
-                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 ">
-                            <div class="ps-block--icon-box-2">
-                                <div class="ps-block__thumbnail"><img style="animation: float 3s linear infinite" src="{% static 'main/image/undraw_Bitcoin_P2P_re_1xqa.svg' %}" alt=""></div>
-                                <div class="ps-block__content">
-                                    <h4 style="color: #8b511f">Blockchain Based </h4>
-                                    <div class="ps-block__desc" data-mh="about-desc">
-                                        <p style="color: #fff">Onpoint Currency is a blockchain based platform owned by a Nigerian based Italian enthusiast known as Adrano Fonara and it is the first blockchain based P2P platform with a unique mission to help enrich people by creating a secure decentralized investment system</p>
+            <div class="section section-footer section-s tc-light bg-transparent">
+                <div class="container">
+                    <!-- Block @s -->
+                    <div class="nk-block block-footer">
+                        <div class="row">
+                            <div class="col">
+                                <div class="wgs wgs-text text-center mb-3">
+                                    <ul class="social pdb-m justify-content-center">
+                                        <li><a href="#"><em class="social-icon fab fa-facebook-f"></em></a></li>
+                                        <li><a href="#"><em class="social-icon fab fa-twitter"></em></a></li>
+                                        <li><a href="#"><em class="social-icon fab fa-youtube"></em></a></li>
+                                        <li><a href="#"><em class="social-icon fab fa-github"></em></a></li>
+                                        <li><a href="#"><em class="social-icon fab fa-bitcoin"></em></a></li>
+                                        <li><a href="#"><em class="social-icon fab fa-medium-m"></em></a></li>
+                                    </ul>
+                                    <div class="copyright-text copyright-text-s3 pdt-m">
+                                        <p><span class="d-sm-block">Copyright &copy; 2021, Onpoint Currency. Template Made By <a href="./">Oppenhiem</a> </span>All trademarks and copyrights belong to their respective owners.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 ">
-                            <div class="ps-block--icon-box-2">
-                                <div class="ps-block__thumbnail"><img  style="animation: float 3s linear infinite" src="{% static 'main/image/undraw_transfer_money_rywa.svg' %}" alt=""></div>
-                                <div class="ps-block__content">
-                                    <h4 style="color: #8b511f">Know Your Customer</h4>
-                                    
-                                    <div class="ps-block__desc" data-mh="about-desc">
-                                        <p style="color: #fff">Building trust with your users starts with getting to know them better. A more complete understanding of your user base is only possible with the right identity and reputation tools.We implement painless, end-to-end Know Your Customer processes to ensure transparency and user trust.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 ">
-                            <div class="ps-block--icon-box-2">
-                                <div class="ps-block__thumbnail"><img style="animation: float 3s linear infinite" src="{% static 'main/image/about-man.png' %}" alt=""></div>
-                                <div class="ps-block__content">
-                                    <h4 style="color: #8b511f">Earn While you Sleep</h4>
-                                    <div class="ps-block__desc" data-mh="about-desc">
-                                        <p style="color: #fff">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    </div><a href="#">Learn more</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            <div style="height: 7.4rem;
-                 background-image: linear-gradient(
-                    180deg,
-                    transparent,
-                    rgba(45, 54, 83, 0.61),
-                    #2d3653">
-
-            </div>
-
-
-        <div class="ps-section--vendor ps-vendor-milestone" style="background-color:#2d3653; color: #2d3653">
-            <div class="container">
-                <div class="ps-section__header">
-                    <p style="color: #e7b332">How it works</p>
-                    <h4 style="color: #fff">Onpoint Currency in 4 steps</h4>
-                </div>
-                <div class="ps-section__content">
-                    <div class="ps-block--vendor-milestone">
-                        <div class="ps-block__left">
-                            <h4 style="color: #e7b332">Register on our Platform</h4>
-                            <ul>
-                                <li style="color: #fff">Register with a one time registration fee of 5$ in busd to our crypto account</li>
-                                <li style="color: #fff">Submit proof of payment.</li>
-
-                            </ul>
-                        </div>
-                        <div class="ps-block__right"><img src="{% static 'main/image/undraw_arrived_f58d.svg' %}" alt=""></div>
-                        <div class="ps-block__number"><span>1</span></div>
-                    </div>
-                    <div class="ps-block--vendor-milestone reverse">
-                        <div class="ps-block__left">
-                            <h4 style="color: #e7b332">Commit in Crypto of Fiat</h4>
-                            <ul>
-                                <li style="color: #fff">Select your preferred package from our list of package</li>
-                                <li style="color: #fff">wait for 24hrs to recieve a pair</li>
-                                <li style="color: #fff">Make your payment.</li>
-                                <li style="color: #fff">Provide proof of payment.</li>
-                            </ul>
-                        </div>
-                        <div class="ps-block__right"><img src="{% static 'main/image/undraw_crypto_portfolio_2jy5.svg' %}" alt=""></div>
-                        <div class="ps-block__number"><span>2</span></div>
-                    </div>
-                    <div class="ps-block--vendor-milestone">
-                        <div class="ps-block__left">
-                            <h4 style="color: #e7b332">Relax and get paid</h4>
-                            <ul>
-                                <li style="color: #fff">Now it's your turn to get paid and earn</li>
-                                <li style="color: #fff">Sit back, relax & let your money work for you all day, everyday.</li>
-                            </ul>
-                        </div>
-                        <div class="ps-block__right"><img src="{% static 'main/image/undraw_stepping_up_g6oo.svg' %}" alt=""></div>
-                        <div class="ps-block__number"><span>3</span></div>
-                    </div>
-                    <div class="ps-block--vendor-milestone reverse">
-                        <div class="ps-block__left">
-                            <h4 style="color: #e7b332">Get your bonus</h4>
-                            <ul>
-                                <li style="color: #fff">Your gain is paid after a short period</li>
-                                <li style="color: #fff">Note that your original capital will be recycled by the system and you will only be payed your percentage profit until four cycle where you most earned back your capital</li>
-                            </ul>
-                        </div>
-                        <div class="ps-block__right"><img src="{% static 'main/img/vendor/milestone-4.png' %}" alt=""></div>
-                        <div class="ps-block__number"><span>4</span></div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-       
-
-        <div class="ps-section--vendor ps-vendor-best-fees" style="background-color: #bba14f" >
-            <div class="container">
-                <div class="ps-section__header">
-                    <p style="color: #161f31 !important">BEST FEES TO START</p>
-                    <h4 style="color: #161f31">Affordable, transparent, and secure</h4>
-                </div>
-                <div class="ps-section__content">
-                    <h5 style="color:#161f31">It doesn’t cost a thing to list up to 50 items a month, and you only pay after your stuff sells. It’s just a small percent of the money you earn</h5>
-                    <div class="ps-section__numbers">
-                        <figure>
-                            <h3>$0</h3><span>List Fee</span>
-                        </figure>
-                        <figure>
-                            <h3>$0</h3><span>List Fee</span>
-                        </figure>
-                        <figure>
-                            <h3>5%</h3><span>Final Value Fee</span>
-                        </figure>
-                    </div>
-                    <div class="ps-section__desc">
-                        <figure>
-                            <figcaption style="color: #161f31">Here's what you get after commiting:</figcaption>
-                            <ul>
-                                <li style="color: #161f31">25% of your capital every week</li>
-                                <li style="color: #161f31">No drama no delay, fast payment, and everybody goes home smiling.</li>
-                            </ul>
-                        </figure>
-                    </div>
-                    <div class="ps-section__highlight"><img src="{% static 'main/img/icons/vendor-4.png' %}" alt="">
-                        <figure>
-                            <p>We’re serious about security and ensure your personal information is fully encrypted and securely stored. We guard all of your personal information with 256-bit encryption and other cutting-edge security technologies.</p>
-                        </figure>
-                    </div>
-                    <div class="ps-section__footer">
-                        <p>Trust is our currency. We are committed to the security of your money and the protection of your account. That is how we earn your trust.</p>
-                    </div>
+                    </div><!-- .block @e -->
                 </div>
             </div>
-        </div>
-        <div class="ps-section--vendor ps-vendor-testimonials">
-            <div class="container">
-                <div class="ps-section__header">
-                    <p>INVESTORS STORIES</p>
-                    <h4>See investors stories about their experience with OnpointCurrency</h4>
-                </div>
-                <div class="ps-section__content">
-                    <div class="ps-carousel--nav owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="10000" data-owl-gap="30" data-owl-nav="true" data-owl-dots="true" data-owl-item="2" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="2" data-owl-duration="1000" data-owl-mousedrag="on">
-                        <div class="ps-block--testimonial">
-                            <div class="ps-block__header"><img src="{% static 'main/img/users/1.jpg' %}" alt=""></div>
-                            <div class="ps-block__content"><i class="icon-quote-close"></i>
-                                <h4 style="color: #f5bd02">Kanye West<span>Head Chef at BBQ Restaurant</span></h4>
-                                <p>Sed elit quam, iaculis sed semper sit amet udin vitae nibh. at magna akal semperFusce commodo molestie luctus.Lorem ipsum Dolor tusima olatiup.</p>
-                            </div>
-                        </div>
-                        <div class="ps-block--testimonial">
-                            <div class="ps-block__header"><img src="{% static 'main/img/users/2.png' %}" alt=""></div>
-                            <div class="ps-block__content"><i class="icon-quote-close"></i>
-                                <h4 style="color: #f5bd02">Anabella Kleva<span>Boss at TocoToco</span></h4>
-                                <p>Sed elit quam, iaculis sed semper sit amet udin vitae nibh. at magna akal semperFusce commodo molestie luctus.Lorem ipsum Dolor tusima olatiup.</p>
-                            </div>
-                        </div>
-                        <div class="ps-block--testimonial">
-                            <div class="ps-block__header"><img src="{% static 'main/img/users/3.jpg' %}" alt=""></div>
-                            <div class="ps-block__content"><i class="icon-quote-close"></i>
-                                <h4 style="color: #f5bd02">William Roles<span>Head Chef at BBQ Restaurant</span></h4>
-                                <p>Sed elit quam, iaculis sed semper sit amet udin vitae nibh. at magna akal semperFusce commodo molestie luctus.Lorem ipsum Dolor tusima olatiup.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="ps-section--vendor ps-vendor-faqs" style="background-color: #bba14f">
-            <div class="container">
-                <div class="ps-section__header">
-                    <p style="color: #161f31">FREQUENTLY ASKED QUESTIONS</p>
-                    <h4 style="color: #161f31 !important">Here are some Frequenty Asked Questions About OnpointCurrency</h4>
-                </div>
-                <div class="ps-section__content">
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
-                            <figure>
-                                <figcaption style="color: #161f31 !important">How do fees work on OnpointCurrency</figcaption>
-                                <p style="color: #161f31 !important">Joining and starting a shop on Martfury is free. There are three basic selling fees: a listing fee, a transaction fee, and a payment processing fee.</p>
-                                <p style="color: #161f31 !important">It costs USD 0.20 to publish a listing to the marketplace. A listing lasts for four months or until the item is sold. Once an item sells, there is a 3.5% transaction fee on the sale price (not including shipping costs). If you accept payments with PayPal, there is also a payment processing fee based on their fee structure.</p>
-                                <p style="color: #161f31 !important">Listing fees are billed for $0.20 USD, so if your bank’s currency is not USD, the amount may differ based on changes in the exchange rate.</p>
-                            </figure>
-                            <figure>
-                                <figcaption style="color: #161f31 !important">What do I need to do to be eigible?</figcaption>
-                                <p style="color: #161f31 !important">It’s easy to set up a shop on Martfury. Create an Martfury account (if you don’t already have one), set your shop location and currency, choose a shop name, create a listing, set a payment method (how you want to be paid), and finally set a billing method (how you want to pay your Martfuryfees).</p>
-                            </figure>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
-                            <figure>
-                                <figcaption style="color: #161f31 !important">How do I get paid?</figcaption>
-                                <p style="color: #161f31 !important">If you accept payments with PayPal, funds from PayPal sales on Martfury will be deposited into your PayPal account. We encourage sellers to use a PayPal Business account and not a Personal account, as personal accounts are subject to monthly receiving limits and cannot accept payments from buyers that are funded by a credit card.</p>
-                                <p style="color: #161f31 !important">It costs USD 0.20 to publish a listing to the marketplace. A listing lasts for four months or until the item is sold. Once an item sells, there is a 3.5% transaction fee on the sale price (not including shipping costs). If you accept payments with PayPal, there is also a payment processing fee based on their fee structure.</p>
-                                <p style="color: #161f31 !important">Listing fees are billed for $0.20 USD, so if your bank’s currency is not USD, the amount may differ based on changes in the exchange rate.</p>
-                            </figure>
-                            <figure>
-                                <figcaption style="color: #161f31 !important">Do I need a credit or debit card ?</figcaption>
-                                <p style="color: #161f31 !important">No, a credit or debit card is not required to create a shop. To be verified as a seller you have the choice to use either a credit card or to register via PayPal. You will not incur any charges until you open your shop and publish your listings.</p>
-                            </figure>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="ps-section__footer">
-                    <p>Still have more questions? Feel free to contact us.</p><a class="ps-btn" href="#">Contact Us</a>
-                </div>
-            </div>
-        </div>
-        <div style="background-color: #fff" class="ps-vendor-banner bg--cover" data-background="{% static 'main/image/bitcoin-1813503_1280.jpg' %}">
-            
-                <h2 style="color: #fff">It's time to start making money.</h2><a class="ps-btn ps-btn--lg" href="comming-soon.html">Get Started</a>
-            </div>
-        </div>
+        </footer>
     </div>
-    <div class="ps-newsletter">
-        <div class="container">
-            <form class="ps-form--newsletter" action="do_action" method="post">
-                <div class="row">
-                    <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-12 ">
-                        <div class="ps-form__left">
-                            <h3>Newsletter</h3>
-                            <p>Subcribe to get information about products and coupons</p>
-                        </div>
-                    </div>
-                    <div class="col-xl-7 col-lg-12 col-md-12 col-sm-12 col-12 ">
-                        <div class="ps-form__right">
-                            <div class="form-group--nest">
-                                <input class="form-control" type="email" placeholder="Email address">
-                                <button class="ps-btn">Subscribe</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
+    
+    <div class="preloader"><span class="spinner spinner-round"></span></div>
+    
+    <!-- JavaScript -->
+    <script src="{% static 'assets/js/jquery.bundle.js' %}?ver=1930"></script>
+    <script src="{% static 'assets/js/scripts.js' %}?ver=1930"></script>
+    <script src="{% static 'assets/js/charts.js' %}"></script>
+</body>
 
-
-    </div>
-
-    <div class="ps-contact-form" style="background-color: #2d3653">
-            <div class="container">
-                <form class="ps-form--contact-us" action="index.html" method="get">
-                    <h3 style="color: #D4af37">Get In Touch</h3>
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
-                            <div class="form-group">
-                                <input style="border-radius: 20px; box-shadow: 5px 5px 5px #8b511f;" class="form-control" type="text" placeholder="Name *">
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
-                            <div class="form-group">
-                                <input style="border-radius: 20px; box-shadow: 5px 5px 5px #8b511f;" class="form-control" type="text" placeholder="Email *">
-                            </div>
-                        </div>
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
-                            <div class="form-group">
-                                <input style="border-radius: 20px; box-shadow: 5px 5px 5px #8b511f;" class="form-control" type="text" placeholder="Subject *">
-                            </div>
-                        </div>
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
-                            <div class="form-group">
-                                <textarea style="border-radius: 20px; box-shadow: 5px 5px 5px #8b511f;" class="form-control" rows="5" placeholder="Message"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group submit">
-                        <button st class="ps-btn">Send message</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-     
-    {% include "main/footer.html" %}
-    {% endblock %}
+</html>

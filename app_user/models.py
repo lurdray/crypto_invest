@@ -64,7 +64,7 @@ class Investment(models.Model):
 
 
 	request_status = models.BooleanField(default=False)
-	harvest_amount = models.IntegerField(default=0)
+	harvest_amount = models.FloatField(default=0)
 	ha_payment_status = models.BooleanField(default=False)
 
 	switch_date7 = models.DateTimeField(default=timezone.now)

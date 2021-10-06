@@ -15,7 +15,7 @@
 
 
   </style>
-  <div class="content-wrapper">
+  <div class="content-wrapper" style="background-color: #28384c;">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
@@ -97,11 +97,13 @@
                   <label for="exampleInputPassword1">BNB Amount</label>
                   <input name="amount" type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter amount(bnb)...">
                 </div>
+                <p class="float-right">BNB Amt: {{ bnb_balance }}BNB</p>
 
                 <br />
                 <div class="form-group">
                   <button type="submit" class="btn btn-warning btn-block">Submit</button>
                 </div>
+
 
                 </div>
                 <!-- /.card-body -->
@@ -125,11 +127,9 @@
 
     <!-- Main Footer -->
   <footer class="main-footer" style="background-color: #2d3653">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.1.0
-    </div>
+    <strong>Copyright &copy; 2021 <a href="https://Oppenhiem.io">Oppenhiem.io</a>.</strong>
+   
+    
   </footer>
 </div>
 <!-- ./wrapper -->
@@ -137,3 +137,5 @@
 
 
 {% endblock %}
+
+

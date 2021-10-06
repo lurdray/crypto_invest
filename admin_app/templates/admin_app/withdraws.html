@@ -10,7 +10,7 @@
   <!-- Main Sidebar Container -->
   {% include 'admin_app/sidebar.html' %}
 <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper" style="background-color: #28384c;">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
@@ -21,7 +21,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">All Withdrawals</li>
+              <li class="breadcrumb-item active">All Withdrawals </li>
             </ol>
           </div>
         </div>
@@ -35,7 +35,7 @@
           
           <div class="col-md-12">
             <!-- general form elements -->
-            <div class="card card-primary">
+            <div class="card card-warning">
               <div class="card-header">
                 <h3 class="card-title">All Withdrawals</h3>
               </div>
@@ -53,7 +53,7 @@
                               <th>Harvests</th>
                               <th>Date</th>
                               <th>Payment Status</th>
-                              <th></th>
+                              <th>Action</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -76,8 +76,7 @@
                                       <p>Paid</p>
                                     {% endif %}
                                   </td>
-                                  <td>
-                                  </td>
+                                  <td><a href="{% url 'admin_app:withdraw_detail' item.id %}"><span style="color: #f5bd02;" class="fas fa-cogs"></span></a></td>
                                 </tr>
                               {% endfor %}
                             
@@ -109,11 +108,9 @@
 
     <!-- Main Footer -->
   <footer class="main-footer" style="background-color: #2d3653">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.1.0
-    </div>
+    <strong>Copyright &copy; 2021 <a href="https://Oppenhiem.io">Oppenhiem.io</a>.</strong>
+   
+   
   </footer>
 </div>
 <!-- ./wrapper -->

@@ -10,7 +10,7 @@
   <!-- Main Sidebar Container -->
   {% include 'admin_app/sidebar.html' %}
 <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper" style="background-color: #28384c;">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
@@ -28,41 +28,50 @@
       </div><!-- /.container-fluid -->
     </section>
 
+
     <!-- Main content -->
-  <section class="content">
-    <div class="container-fluid">
-      <div class="row">
-        
-        <div class="col-md-12">
-          <!-- general form elements -->
-          <div class="card card-primary">
-            <div class="card-header">
-              <h3 class="card-title">Information about {{ withdraw }} Withdraw</h3>
-            </div>
-            <br />
-            <div class="row container">
-              <br /><br /><br />
-              <form method="post">
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          
+          <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-warning">
+              <div class="card-header">
+                <h3 class="card-title">All Investors</h3>
+              </div>
+
+            <!-- Profile Image -->
+            
+              <div class="card-body box-profile" style="background-color: #0e1326">
+                
+
+                <h3 style="color: #0e1326" class="profile-username text-center"> <p style="color: #fff; ">Name: {{ investor.full_name }}</p></h3>
+
+                <p style="background-color: #0e1326; font-size: 13px" class="text-muted text-center">{{ investor.public_key }}</p>
+
+                <ul class="list-group list-group-unbordered mb-3">
+                  
+                  <li style="background-color: #0e1326" class="list-group-item">
+                    <b>Investor: </b> <a class="float-right">{{ withdraw.app_user.full_name }}</a>
+                  </li>
+                  <li style="background-color: #0e1326" class="list-group-item">
+                    <b>Amount: </b> <a class="float-right">{{ withdraw.amount }}</a>
+                  </li>
+
+                  <li style="background-color: #0e1326" class="list-group-item">
+                    <b>Harvest: {{ withdraw.harvest_amount }}</b> <a class="float-right">{{ withdraw.harvest_amount }}</a>
+                  </li>
+                  <li style="background-color: #0e1326" class="list-group-item">
+                    <b>Wallet Address: </b>  <a class="float-right">{{ withdraw.app_user.public_key }}</a>
+                  </li>
+                  
+
+                  <form method="post">
                 {% csrf_token %}
                 <div class="row">
-                  <label>Investor: {{ withdraw.app_user.full_name }}</label><br />
-                </div>
-                <br />
-                <div class="row">
-                  <label>Amount: {{ withdraw.amount }}</label><br />
-                </div>
-                <br />
-                <div class="row">
-                  <label>Harvest: {{ withdraw.harvest_amount }}</label><br />
-                  </div>
-                <br />
-                <div class="row">
-                  <label>Wallet Address: {{ withdraw.app_user.public_key }}</label><br />
-                  <small>Copy that address and send the harvest amount to it and then,  come back here to activate the payment.</small>
-                </div>
-                <br />
-                  <select name="status" id="cars">
-                    {% if withdraw.ha_payment_status == True %}
+                  <select class="form-control" name="status" id="cars">
+                     {% if withdraw.ha_payment_status == True %}
                     <option value="activate" selected>Activate</option>
                     <option value="deactivate">Deactivate</option>
                     {% else %}
@@ -71,29 +80,41 @@
                     {% endif %}
                   </select>
                 </div>
-                <br />
+                <br>
 
                 <div class="row">
-                  <button type="submit">Submit</button>
+                  <button class="btn btn-warning btn-block" type="submit">Submit</button>
                       
                 </div>
                 
               </form>
-                
-            </div>                
+                </ul>
+
+               <!-- /.card -->
+
+                    
+                </div>
+                <!-- /.tab-content -->
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.card -->
           </div>
+          <!-- /.col -->
         </div>
-      </div>
-    </div>
-  </section>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <br><br><br>
+
+   
+
+
 
     <!-- Main Footer -->
   <footer class="main-footer" style="background-color: #2d3653">
-    <strong>Copyright &copy; 2014-2021 <a href="https://admin_applte.io">admin_appLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.1.0
-    </div>
+    <strong>Copyright &copy; 2021 <a href="https://Oppenhiem.io">Oppenhiem.io</a>.</strong>
+   
+   
   </footer>
 </div>
 <!-- ./wrapper -->

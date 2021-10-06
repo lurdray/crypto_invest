@@ -10,6 +10,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
 
 from app_user.models import *
+from main.models import *
 
 from django.core.mail import send_mail
 
@@ -19,9 +20,9 @@ from django.core.mail import send_mail
 
 
 def IndexView(request):
-	app_user = AppUser.objects.get(user__pk=request.user.id)
+	#app_user = AppUser.objects.get(user__pk=request.user.id)
 	context = {
-		"app_user": app_user
+		#"app_user": app_user
 			
             }
 	
@@ -105,6 +106,38 @@ def InvestmentDetailView(request, investment_id):
 		if status == "activate":
 			investment.payment_status_k = True
 
+
+			primary_lists = PrimaryList.objects.all()
+			for i in primary_lists:
+				for j in i.other_users.all():
+					if j.app_user.id == investment.app_user.id:
+
+						other_user_id = Investment.app_user.id
+						app_user_id = i.app_user.id
+						amount = 0.005*(float(Investment.harvest_amount))
+
+						AddReferral(request, app_user_id, other_user_id, amount)
+
+					else:
+						pass
+
+
+			secondary_lists = SecondaryList.objects.all()
+			for i in secondary_lists:
+				for j in i.other_users.all():
+					if j.app_user.id == investment.app_user.id:
+						
+						other_user_id = Investment.app_user.id
+						app_user_id = i.app_user.id
+						amount = 0.002*(float(Investment.harvest_amount))
+
+						AddReferral(request, app_user_id, other_user_id, amount)
+
+					else:
+						pass
+
+
+
 		elif status == "deactivate":
 			investment.payment_status_k = False
 
@@ -128,6 +161,41 @@ def InvestmentDetailView(request, investment_id):
 		return render(request, "admin_app/investment_detail.html", context )
 
 
+
+
+
+def ReferralsView(request):
+	referrals = Referral.objects.filter(request_status=True)
+
+	context = {
+			"referrals": referrals,
+
+            }
+	
+	return render(request, "admin_app/referrals.html", context )
+
+
+
+
+def ReferralDetailView(request, referral_id):
+	#app_user = AppUser.objects.get(user__pk=request.user.id)
+	
+	referral = Referral.objects.get(id=referral_id)
+
+	if request.method == "POST":
+		referral.paid_status = True
+		referral.save()
+
+		return HttpResponseRedirect(reverse("admin_app:referrals"))
+
+
+	else:
+
+		context = {
+			"referral": referral,
+		}
+
+		return render(request, "admin_app/referral_detail.html", context )
 
 
 
@@ -189,6 +257,19 @@ def TransactionView(request):
             }
 	
 	return render(request, "admin_app/transaction.html", context )
+
+
+
+
+def MessageView(request):
+
+	messages = Contact.objects.order_by('-pub_date')
+
+	context = {
+			"messages": messages,
+            }
+	
+	return render(request, "admin_app/message.html", context )
 
 
 

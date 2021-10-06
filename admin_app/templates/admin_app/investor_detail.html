@@ -10,18 +10,18 @@
   <!-- Main Sidebar Container -->
   {% include 'admin_app/sidebar.html' %}
 <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper" style="background-color: #28384c;">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>{{ investor }}</h1>
+            <h1>All Investments</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">My Investment</li>
+              <li class="breadcrumb-item active">All Investment</li>
             </ol>
           </div>
         </div>
@@ -29,40 +29,69 @@
     </section>
 
     <!-- Main content -->
-  <section class="content">
-    <div class="container-fluid">
-      <div class="row">
-        
-        <div class="col-md-12">
-          <!-- general form elements -->
-          <div class="card card-primary">
-            <div class="card-header">
-              <h3 class="card-title">Information about {{ investor }}</h3>
-            </div>
-            <br />
-            <div class="row container">
-              <h2 class="container">{{ investor.public_key }}</h2>
-              <p><b>Name:</b> {{ investor.full_name }}</p><br />
-              <p><b>House Address:</b> {{ investor.house_address }}</p><br />
-              <p><b>Date of birth:</b> {{ investor.dob }}</p><br />
-              <p><b>Age:</b> {{ investor.age }}</p><br />
-              <p><b>State of origin:</b> {{ investor.state_of_origin }}</p><br />
-              <p><b>Country:</b> {{ investor.country }}</p><br />
-              <p><b>Language:</b> {{ investor.language }}</p><br />
-              <p><b>phone Number:</b> {{ investor.phone_no }}</p><br />
-              <p><b>Bank Name:</b> {{ investor.bank_name }}</p><br />
-              <p><b>Bank Verification Number:</b> {{ investor.bank_verification_number }}</p><br />
-              <p><b>Bank Account Number:</b> {{ investor.bank_account_number }}</p><br />
-              <p><b>Bank Account Name:</b> {{ investor.bank_account_name }}</p><br />
-              <p><b>Payment Wallet Address:</b> {{ investor.payment_wallet_address }}</p><br />
-              <p><b>Public Key:</b> {{ investor.public_key }}</p><br />
-              <p><b>Status:</b> {{ investor.status }}</p><br />
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          
+          <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-warning">
+              <div class="card-header">
+                <h3 class="card-title">All Investors</h3>
+              </div>
 
-              <br /><br /><br />
-              <form method="post">
+            <!-- Profile Image -->
+            
+              <div class="card-body box-profile" style="background-color: #0e1326">
+                
+
+                <h3 style="color: #0e1326" class="profile-username text-center"> <p style="color: #fff; ">Name: {{ investor.full_name }}</p></h3>
+
+                <p style="background-color: #0e1326; font-size: 13px" class="text-muted text-center">{{ investor.public_key }}</p>
+
+                <ul class="list-group list-group-unbordered mb-3">
+                  
+                  <li style="background-color: #0e1326" class="list-group-item">
+                    <b>Date of Birth</b> <a class="float-right">{{ investor.dob }}</a>
+                  </li>
+                  <li style="background-color: #0e1326" class="list-group-item">
+                    <b>House Address:</b> <a class="float-right">{{ investor.house_address }}</a>
+                  </li>
+
+                  <li style="background-color: #0e1326" class="list-group-item">
+                    <b>State of origin:</b> <a class="float-right">{{ investor.state_of_origin }}</a>
+                  </li>
+                  <li style="background-color: #0e1326" class="list-group-item">
+                    <b>Country:</b>  <a class="float-right">{{ investor.country }}</a>
+                  </li>
+                  <li style="background-color: #0e1326" class="list-group-item">
+                    <b>phone Number:</b> <a class="float-right">{{ investor.phone_no }}</a>
+                  </li>
+
+                  <li style="background-color: #0e1326" class="list-group-item">
+                    <b>Bank Name:</b> <a class="float-right"> {{ investor.bank_name }}</a>
+                  </li>
+                  <li style="background-color: #0e1326" class="list-group-item">
+                    <b>Bank Verification Number:</b>  <a class="float-right">{{ investor.bank_verification_number }}</a>
+                  </li>
+                  <li style="background-color: #0e1326" class="list-group-item">
+                    <b>Bank Account Number:</b> <a class="float-right">{{ investor.bank_account_number }}</a>
+                  </li>
+
+                  <li style="background-color: #0e1326" class="list-group-item">
+                    <b>Payment Wallet Address:</b>  <a class="float-right">{{ investor.payment_wallet_address }} </a>
+                  </li>
+
+                  <li style="background-color: #0e1326" class="list-group-item">
+                    <b>Bank Account Number:</b> <a class="float-right">{{ investor.bank_account_number }}</a>
+                  </li>
+
+                  <p><b>Status:</b> {{ investor.status }}</p><br />
+
+                  <form method="post">
                 {% csrf_token %}
                 <div class="row">
-                  <select name="status" id="cars">
+                  <select class="form-control" name="status" id="cars">
                     {% if investor.status == True %}
                     <option value="activate" selected>Activate</option>
                     <option value="deactivate">Deactivate</option>
@@ -72,20 +101,32 @@
                     {% endif %}
                   </select>
                 </div>
+                <br>
 
                 <div class="row">
-                  <button type="submit">Submit</button>
+                  <button class="btn btn-warning btn-block" type="submit">Submit</button>
                       
                 </div>
                 
               </form>
-                
-            </div>                
+                </ul>
+
+               <!-- /.card -->
+
+                    
+                </div>
+                <!-- /.tab-content -->
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.card -->
           </div>
+          <!-- /.col -->
         </div>
-      </div>
-    </div>
-  </section>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <br><br><br>
+
 
     <!-- Main Footer -->
   <footer class="main-footer" style="background-color: #2d3653">

@@ -35,7 +35,7 @@
           
           <div class="col-md-12">
             <!-- general form elements -->
-            <div class="card card-primary">
+            <div class="card card-warning" style="background-color: #28384c;">
               <div class="card-header">
                 <h3 class="card-title">All Invesments</h3>
               </div>
@@ -54,7 +54,7 @@
                               <th>Date</th>
                               <th>Payment Status</th>
                               <th>Verified</th>
-                              <th></th>
+                              <th>Action</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -84,8 +84,7 @@
                                       <p>Verified</p>
                                     {% endif %}
                                   </td>
-                                  <td>
-                                  </td>
+                                  <td><a href="{% url 'admin_app:investment_detail' item.id %}"><span style="color: #f5bd02;" class="fas fa-cogs"></span></a></td>
                                 </tr>
                               {% endfor %}
                             

@@ -21,26 +21,23 @@
       </div>
 
       <!-- SidebarSearch Form -->
-      <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div>
+      
 
+      <style type="text/css">
+        .nav-link.made{
+          background-color: #f39c12;
+          color:  #1f2d3d !important;
+        }
+      </style>
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            
-            <a href="{% url 'app_user:index'%}" class="nav-link {% if index == request.path %} active  {% endif %}">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+          <li class="nav-item">
+            {% url 'app_user:index' as index %}
+            <a href="{{ index }}" class="nav-link {% if index == request.path %} made  {% endif %}">
+              <i class="nav-icon fas fa-home"></i>
               <p>
                 Home
               </p>
@@ -48,7 +45,8 @@
             
           </li>
           <li class="nav-item">
-            <a href="{% url 'app_user:profile' %}" class="nav-link">
+            {% url 'app_user:profile' as profile %}
+            <a href="{{ profile }}" class="nav-link {% if profile == request.path %} made  {% endif %}">
               <i class="nav-icon fa fa-user"></i>
               <p>
                 Profile 
@@ -57,8 +55,9 @@
           </li>
 
           <li class="nav-item">
-            <a href="{% url 'app_user:commit' %}" class="nav-link">
-              <i class="nav-icon fa fa-user"></i>
+            {% url 'app_user:commit' as commit %}
+            <a href="{{ commit }}" class="nav-link {% if commit == request.path %} made {% endif %}">
+              <i class="nav-icon fa fa-credit-card"></i>
               <p>
                 Commit 
               </p>
@@ -66,8 +65,9 @@
           </li>
 
           <li class="nav-item">
-            <a href="{% url 'app_user:investment' %}" class="nav-link">
-              <i class="nav-icon fa fa-user"></i>
+            {% url 'app_user:investment' as investment %}
+            <a href="{{ investment }}" class="nav-link {% if investment == request.path %} made {% endif %}">
+              <i class="nav-icon fa fa-money"></i>
               <p>
                 My Investment 
               </p>
@@ -75,10 +75,22 @@
           </li>
 
           <li class="nav-item">
-            <a href="{% url 'wallet:index' %}" class="nav-link">
-              <i class="nav-icon fa fa-user"></i>
+            {% url 'wallet:index' as index %}
+            <a href="{{ index }}" class="nav-link {% if index == request.path %} made {% endif %}">
+              <i class="nav-icon fa fa-wallet"></i>
               <p>
                 My Wallet 
+              </p>
+            </a>
+          </li>
+
+
+          <li class="nav-item">
+            {% url 'referral:index' as index %}
+            <a href="{{ index }}" class="nav-link {% if index == request.path %} made {% endif %}">
+              <i class="nav-icon fa fa-wallet"></i>
+              <p>
+                My Referral 
               </p>
             </a>
           </li>

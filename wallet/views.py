@@ -96,6 +96,8 @@ def SendBnbView(request):
 
 	app_user = AppUser.objects.get(user__pk=request.user.id)
 
+	
+
 	if request.method == "POST":
 		receiver = request.POST.get("receiver")
 		amount = request.POST.get("amount")

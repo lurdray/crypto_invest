@@ -10,7 +10,7 @@
   <!-- Main Sidebar Container -->
   {% include 'admin_app/sidebar.html' %}
 <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper" style="background-color: #28384c;">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
@@ -35,19 +35,20 @@
         
         <div class="col-md-12">
           <!-- general form elements -->
-          <div class="card card-primary">
+          <div class="card card-warning">
             <div class="card-header">
-              <h3 class="card-title">Information about {{ investment }} Investment</h3>
+              <h3 class="card-title">Activate/Deactivate {{ investment }} Investment</h3>
             </div>
-            <br />
-            <div class="row container">
-              <h2 class="container">{{ investment.app_user.public_key }}</h2>
+          
 
-              <br /><br /><br />
+          <div class="card-body" style="background-color: #0e1326;">
+              <h5 class="container">{{ investment.app_user.public_key }}</h5>
+
+              
               <form method="post">
                 {% csrf_token %}
                 <div class="row">
-                  <select name="status" id="cars">
+                  <select class="form-control" name="status" id="cars">
                     {% if investment.payment_status_k == True %}
                     <option value="activate" selected>Activate</option>
                     <option value="deactivate">Deactivate</option>
@@ -57,9 +58,10 @@
                     {% endif %}
                   </select>
                 </div>
+                <br>
 
-                <div class="row">
-                  <button type="submit">Submit</button>
+               
+                  <button class="btn btn-warning btn-block" type="submit">Submit</button>
                       
                 </div>
                 

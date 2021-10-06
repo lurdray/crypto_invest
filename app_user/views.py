@@ -11,6 +11,8 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
 
 from app_user.models import *
+from referral.models import *
+from referral.views import *
 
 from django.core.mail import send_mail
 
@@ -86,7 +88,6 @@ def SignUpView(request):
 		email = request.POST.get("username")
 		full_name = request.POST.get("full_name")
 
-
 		if request.POST.get("password2") != request.POST.get("password1"):
 			#return HttpResponse(str("Sorry, Make Sure both passwords match"))
 			messages.warning(request, "Make sure both passwords match")
@@ -120,7 +121,28 @@ def SignUpView(request):
 					if user.is_active:
 						login(request, user)
 
-						app_user = AppUser.objects.get(user__pk=request.user.id)
+						#app_user = AppUser.objects.get(user__pk=request.user.id)
+
+						try:
+							referral_email = request.POST.get("referral_email")
+							app_user = AppUser.objects.get(user__username=referral_email)
+							other_user = AppUser.objects.get(user__pk=request.user.id)
+
+							AddPrimary(request, app_user.id, other_user.id)
+
+							primary_lists = PrimaryList.objects.all()
+							for i in primary_lists:
+								other_users = i.other_users.all()
+								for j in other_users:
+									if j.app_user.id == app_user.id:
+
+										AddSecondary(request, i.app_user.id, other_user.id)
+
+
+						except:
+							pass
+
+
 						messages.warning(request, "One Final Step!")
 						return HttpResponseRedirect(reverse("app_user:complete_sign_up", args=[email,]))
 
@@ -226,6 +248,12 @@ def ProfileView(request):
 
 	app_user = AppUser.objects.get(user__pk=request.user.id)
 
+	bnb_balance = requests.get("http://raytechng.pythonanywhere.com/get-bnb-balance/%s/" % (app_user.public_key))
+	bep_balance = requests.get("http://raytechng.pythonanywhere.com/get-bep-balance/%s/" % (app_user.public_key))
+
+	bnb_balance = bnb_balance.json()
+	bep_balance = bep_balance.json()
+
 	if request.method == "POST":
 		full_name = request.POST.get("full_name")
 		house_address = request.POST.get("house_address")
@@ -276,6 +304,8 @@ def ProfileView(request):
 	else:
 
 		context = {
+			"bnb_balance": bnb_balance["balance"],
+			"bep_balance": bep_balance["balance"],
 			"app_user": app_user
 				
 	            }
@@ -458,12 +488,15 @@ def InvestmentView(request):
 		counts += 1
 		total_amount += float(item.amount)
 
-	bnb_balance = requests.get("http://raytechng.pythonanywhere.com/get-bnb-balance/%s/" % (app_user.public_key))
-	bep_balance = requests.get("http://raytechng.pythonanywhere.com/get-bep-balance/%s/" % (app_user.public_key))
+	#bnb_balance = requests.get("http://raytechng.pythonanywhere.com/get-bnb-balance/%s/" % (app_user.public_key))
+	#bep_balance = requests.get("http://raytechng.pythonanywhere.com/get-bep-balance/%s/" % (app_user.public_key))
 
-	#return HttpResponse(str(bep_balance))
-	bnb_balance = bnb_balance.json()
-	bep_balance = bep_balance.json()
+	#bnb_balance = bnb_balance.json()
+	#bep_balance = bep_balance.json()
+
+	bep_balance = 0
+	bnb_balance = 0
+
 
 	context = {
 		"app_user": app_user,
@@ -471,8 +504,11 @@ def InvestmentView(request):
 		"counts": counts,
 		"investments": investments,
 
-		"bnb_balance": bnb_balance["balance"],
-		"bep_balance": bep_balance["balance"],
+		"bnb_balance": bnb_balance,
+		"bep_balance": bep_balance,
+
+		#"bnb_balance": bnb_balance["balance"],
+		#"bep_balance": bep_balance["balance"],
 
             }
 

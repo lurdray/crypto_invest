@@ -6,7 +6,7 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center" style="background-color: #0e1326">
-    <img class="animation__wobble" src="{% static 'admin_app/dist/img/AdminLTELogo.png' %}" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__wobble" src="{% static 'app_user/dist/img/AdminLTELogo.png' %}" alt="AdminLTELogo" height="60" width="60">
   </div>
 
   <!-- Navbar -->
@@ -16,18 +16,19 @@
   {% include 'admin_app/sidebar.html' %}
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper" >
+  <div class="content-wrapper" style="background-color: #28384c;">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0" style="color: #0e1326">Admin Dashboard</h1>
+            <h1 class="m-0" style="color: #0e1326">Dashboard</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Admin Dashboard</li>
+              <li class="breadcrumb-item active">{{ app_user.public_key|truncatechars_html:10 }} : 
+            ({{ bnb_balance }}BNB) | ({{ bep_balance }}OPY)</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -93,22 +94,162 @@
     {% endfor %}
 {% endif %}
 
-
-  
-  <section class="content">
+    <!-- Main content -->
+    <section class="content">
       <div class="container-fluid">
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box" style="background-color: #0e1326" >
+              <span class="info-box-icon bg-info elevation-1"><i class="fa fa-bar-chart"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Total Investors</span>
+                <span class="info-box-number">
+                  xxx
+                 
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3" style="background-color: #0e1326">
+              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Total Amount Invested</span>
+                <span class="info-box-number">xxx</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+
+          <!-- fix for small devices only -->
+          <div class="clearfix hidden-md-up"></div>
+
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3" style="background-color: #0e1326">
+              <span class="info-box-icon bg-success elevation-1"><i class="fa fa-line-chart"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Total Withdrawals</span>
+                <span class="info-box-number">xxx</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3" style="background-color: #0e1326">
+              <span class="info-box-icon bg-warning elevation-1"><i class="fa fa-users"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Total Users</span>
+                <span class="info-box-number">xxx</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
 
         <div class="row">
-          <p>Welcome Admin</p>
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header" style="background-color: #f39c12; color: #0e1326">
+                <h5 class="card-title">Crypto Market Action</h5>
+
+                
+              
+                <!-- /.row -->
+              </div>
+              <!-- ./card-body -->
+              <div class="card-footer" style="background-color: #0e1326">
+                <div class="row">
+                  <div class="col-sm-4 col-4">
+                    <div class="description-block border-right">
+                      <span class="description-percentage text-success"><i class="fas fa-caret-up"></i> 17%</span>
+                      <h1 class="description-header" id="btc-price" style="font-size: 26px;">------</h1>
+                      <span class="description-text">BTC/BUSD</span>
+                    </div>
+                    <!-- /.description-block -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-sm-4 col-4">
+                    <div class="description-block border-right">
+                      <span class="description-percentage text-warning"><i class="fas fa-caret-left"></i> 0%</span>
+                      <h5 class="description-header" id="bnb-price" style="font-size: 26px;">---------</h5>
+                      <span class="description-text">BNB/BUSD</span>
+                    </div>
+                    <!-- /.description-block -->
+                  </div>
+                  <!-- /.col -->
+                  
+                  <!-- /.col -->
+                  <div class="col-sm-4 col-4">
+                    <div class="description-block">
+                      <span class="description-percentage text-danger"><i class="fas fa-caret-down"></i> 18%</span>
+                      <h5 class="description-header" id="eth-price" style="font-size: 26px;">--------</h5>
+                      <span class="description-text">ETH/BUSD</span>
+                    </div>
+                    <!-- /.description-block -->
+                  </div>
+                </div>
+                <!-- /.row -->
+              </div>
+              <!-- /.card-footer -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
         </div>
+        <!-- /.row -->
 
+        <!-- Main row -->
       </div>
+    </section>
+        <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          
+          <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-warning">
+              <div class="card-header" >
+                <h3 class="card-title">CoinMarketCap</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+                      <div class="card-body table-responsive p-0" style="background-color: #0e1326;">
+                        <table class="table table-hover text-nowrap" id="leaderboard">
+                          <thead>
+                            <tr>
+                                <th class="rank"><abbr title="Position">Rank</abbr></th>
+                                <th class="name">Name</th>
+                                <th class="symbol">Symbol</th>
+                                <th class="price">Price(USD)</th>
+                                <th class="market_cap">Market Cap</th>
+                                <th class="circulating_supply">Circulating Supply</th>
+                                <th class="volume_24h">Volume(24h)</th>
+                                <th class="percent_change_24h">24h %</th>
+                            </tr>
+                          </thead>
+                          <tbody id="cryptocurrencies">
+                          </tbody>
+                        </table>
+                      </div>
 
-  </section>
-
-
-
-
+                  </div>
+                </div>
+              </div>
+            </section>
   </div>
   <!-- /.content-wrapper -->
 
@@ -121,15 +262,137 @@
  
   <!-- Main Footer -->
   <footer class="main-footer" style="background-color: #2d3653">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+    <strong>Copyright &copy; 2021 <a href="https://Oppenhiem.io">Oppenhiem.io</a>.</strong>
    
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.1.0
-    </div>
+    
   </footer>
 </div>
 <!-- ./wrapper -->
+    <!-- main script -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript">
+
+  // fetch cryptocurrency data and store it in the variable data
+        var xhReq = new XMLHttpRequest();
+        xhReq.open("GET", "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd", false);
+        xhReq.send(null);
+        var data = JSON.parse(xhReq.responseText); 
+
+        // initialization
+        var cryptocurrencies;
+        var timerId;
+        var updateInterval = 30000;
+
+
+        function ascending(a, b) { return a.percent_change_24h > b.percent_change_24h ? 1 : -1; }
+        function descending(a, b) { return a.percent_change_24h < b.percent_change_24h ? 1 : -1; }
+        function reposition() {
+            var height = $("#cryptocurrencies .cryptocurrency").height();
+            var y = height;
+            for(var i = 0; i < cryptocurrencies.length; i++) {
+                cryptocurrencies[i].$item.css("top", y + "px");
+                y += height;            
+            }
+        }  
+        function updateRanks(cryptocurrencies) {
+            for(var i = 0; i < cryptocurrencies.length; i++) {
+                cryptocurrencies[i].$item.find(".rank").text(i + 1);    
+            }
+        }
+
+        function fetchNewData(data,attributeName,name){
+            for(var x in data){
+                if((data[x].name == name) == true) {
+                    return data[x][attributeName];
+                }
+            }
+            return null;
+        }        
+        function updateBoard() {
+            var cryptocurrency = getRandomCoin();   
+            cryptocurrency.percent_change_24h += getRandomScoreIncrease();
+            cryptocurrency.$item.find(".percent_change_24h").text(cryptocurrency.percent_change_24h);
+            cryptocurrencies.sort(descending);
+            updateRanks(cryptocurrencies);
+            reposition();
+        }
+
+        function getNewData(){
+            // get the new data for each coin and change to their new values
+            var newReq = new XMLHttpRequest();
+            newReq.open("GET", "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd", false);
+            newReq.send(null);
+            var newData = JSON.parse(newReq.responseText); 
+
+            for(var i = 0; i < cryptocurrencies.length; i++) {
+                var cryptocurrency = cryptocurrencies[i];
+                cryptocurrency.price = fetchNewData(newData,'current_price',cryptocurrency.name);
+                cryptocurrency.$item.find(".price").text(cryptocurrency.price);
+                cryptocurrency.volume_24h = fetchNewData(newData,'total_volume',cryptocurrency.name);
+                cryptocurrency.$item.find(".volume_24h").text(cryptocurrency.volume_24h);
+                cryptocurrency.percent_change_24h = fetchNewData(newData,'market_cap_change_percentage_24h',cryptocurrency.name);
+                cryptocurrency.$item.find(".percent_change_24h").text(cryptocurrency.percent_change_24h);
+            }
+            cryptocurrencies.sort(descending);
+            updateRanks(cryptocurrencies);
+            reposition();
+            console.log('Finished retrieving new data');
+            
+        }
+        function getRandomScoreIncrease() {
+            return getRandomBetween(50, 150);
+        }
+        function getRandomBetween(minimum, maximum) {
+                return Math.floor(Math.random() * maximum) + minimum;
+        }
+        function resetBoard() {
+            var $list = $("#cryptocurrencies");
+            $list.find(".cryptocurrency").remove();
+            if(timerId !== undefined) {
+                clearInterval(timerId);
+            }
+            cryptocurrencies = [];
+            for(let i = 0;i < 25;i++){
+                cryptocurrencies.push(
+                    {
+                        name : data[i].name,
+                        symbol: data[i].symbol,
+                        price: data[i].current_price,
+                        market_cap: data[i].market_cap,
+                        circulating_supply: Math.round(data[i].circulating_supply),
+                        volume_24h: data[i].total_volume,
+                        percent_change_24h: data[i].market_cap_change_percentage_24h,
+                    }
+                )
+            }
+            
+            for(var i = 0; i < cryptocurrencies.length; i++) {
+                var $item = $(
+                    "<tr class='cryptocurrency'>" + 
+                        "<th class='rank'>" + (i + 1) + "</th>" + 
+                        "<td class='name'>" + cryptocurrencies[i].name + "</td>" + 
+                        "<td class='symbol'>" + cryptocurrencies[i].symbol + "</td>" + 
+                        "<td class='price'>" + cryptocurrencies[i].price + "</td>" + 
+                        "<td class='market_cap'>" + cryptocurrencies[i].market_cap + "</td>" + 
+                        "<td class='circulating_supply'>" + cryptocurrencies[i].circulating_supply + "</td>" + 
+                        "<td class='volume_24h'>" + cryptocurrencies[i].volume_24h + "</td>" + 
+                        "<td class='percent_change_24h'>" + cryptocurrencies[i].percent_change_24h + "</td>" +
+                    "</tr>"
+                );
+
+                cryptocurrencies[i].$item = $item;
+                $list.append($item);
+            }
+            cryptocurrencies.sort(descending);
+            updateRanks(cryptocurrencies);
+            reposition();
+            
+            // fetch new data for the updateInterval
+            timerId = setInterval("getNewData();", updateInterval);
+
+        }   
+        resetBoard();
+
   let ws = new WebSocket("wss://stream.binance.com:9443/ws/ethbusd@trade");
   let bs = new WebSocket("wss://stream.binance.com:9443/ws/btcbusd@trade");
   let bn = new WebSocket("wss://stream.binance.com:9443/ws/bnbbusd@trade");

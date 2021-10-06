@@ -1,0 +1,295 @@
+{% extends "app_user/base.html" %}
+{% load static %}
+{% block content %}
+
+
+   <!-- Navbar -->
+  {% include 'app_user/nav.html' %}
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  {% include 'app_user/sidebar.html' %}
+<!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper" style="background-color: #28384c;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>My Referrals</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">My Referrals</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+
+
+
+
+<section class="content">
+  <div class="container-fluid">
+    <!-- Info boxes -->
+
+    <div class="row">
+      
+      <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="card card-warning">
+          <div class="card-header" >
+            <h3 class="card-title">Claim Referrals</h3>
+          </div>
+          
+            
+          <!-- /.card-header -->
+          <!-- form start -->
+          {% if referrals %}
+          <div class="card-body table-responsive p-0" style="background-color: #0e1326;">
+            <table class="table table-hover text-nowrap">
+              <thead>
+                <tr>
+                  <th>Amount</th>
+                  <th>Date</th>
+                  <th>Action</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  {% for item in referrals %}
+                    <tr>
+                      <td>{{ item.amount }}</td>
+                      <td>{{ item.pub_date }}</td>
+                      <td>
+                        {% if item.request_status == False %}
+                        <a href="{% url 'referral:referral_detail' item.id %}">
+                          Claim Now
+                        </a>
+
+                        {% else %}
+                          Claimed Already
+                        {% endif %}
+                      </td>
+                      <td>
+                        {% if item.paid_status == False %}
+                          Not Paid
+                        {% else %}
+                          Paid
+                        {% endif %}
+                      </td>
+                    </tr>
+                  {% endfor %}
+                
+                
+              </tbody>
+            </table>
+          </div>
+          <div class="card-outline" style="background-color: #f39c12"><div></div> </div>
+<!-- /.card -->
+          {% else %}
+
+
+          <div class="row container">
+            
+            
+            <p class="container">Sorry, No Referrals Yet!</p>
+            <br /><br /><br />
+
+          </div>                
+
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+<section class="content">
+      <div class="container-fluid">
+
+        <div class="row">
+          <div class="col-md-8">
+
+            <!-- Main content -->
+            <section class="content">
+              <div class="container-fluid">
+                <!-- Info boxes -->
+
+                <div class="row">
+                  
+                  <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-warning">
+                      <div class="card-header" >
+                        <h3 class="card-title">Primary Referrals</h3>
+                      </div>
+                      
+                        
+                      <!-- /.card-header -->
+                      <!-- form start -->
+                      {% if primary_list %}
+                              <div class="card-body table-responsive p-0" style="background-color: #0e1326;">
+                                <table class="table table-hover text-nowrap">
+                                  <thead>
+                                    <tr>
+                                      <th>Name</th>
+                                      <th>Date</th>
+                                      <th></th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    
+                                      {% for item in primary_list.other_users.all %}
+                                        <tr>
+                                          <td>{{ item.app_user.full_name }}</td>
+                                          <td>{{ item.pub_date }}</td>
+                                          <td>
+                                          </td>
+                                        </tr>
+                                      {% endfor %}
+                                    
+                                    
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div class="card-outline" style="background-color: #f39c12"><div></div> </div>
+                    <!-- /.card -->
+                              {% else %}
+
+
+                              <div class="row container">
+                                
+                                
+                                <h2 class="container">Sorry, No Referrals Yet!</h2>
+                                <br /><br /><br />
+
+                              </div>                
+
+                              {% endif %}
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+
+
+
+
+                    <!-- Main content -->
+            <section class="content">
+              <div class="container-fluid">
+                <!-- Info boxes -->
+
+                <div class="row">
+                  
+                  <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-warning">
+                      <div class="card-header" >
+                        <h3 class="card-title">Secondary Referrals</h3>
+                      </div>
+                      
+                        
+                      <!-- /.card-header -->
+                      <!-- form start -->
+                      {% if secondary_list %}
+                      <div class="card-body table-responsive p-0" style="background-color: #0e1326;">
+                        <table class="table table-hover text-nowrap">
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>Date</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            
+                              {% for item in secondary_list.other_users.all %}
+                                <tr>
+                                  <td>{{ item.app_user.full_name }}</td>
+                                  <td>{{ item.pub_date }}</td>
+                                  <td>
+                                  </td>
+                                </tr>
+                              {% endfor %}
+                            
+                            
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="card-outline" style="background-color: #f39c12"><div></div> </div>
+            <!-- /.card -->
+                      {% else %}
+
+
+                      <div class="row container">
+                        
+                        
+                        <h2 class="container">Sorry, No Referrals Yet!</h2>
+                        <br /><br /><br />
+
+                      </div>                
+
+                      {% endif %}
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+          </div>
+
+
+        <div class="col-md-4">
+
+          <div class="card card-warning">
+            <div class="card-header" >
+              <h3 class="card-title">Statistics</h3>
+            </div>
+            
+            <div class="card-body container" style="background-color: #0e1326;">
+              <p>Total Referrals: <small>{{ referral_count }}</small></p><hr style="background-color: white;">
+              <p>Total Amounts : <small>{{ referral_amount }}(OPY)</small></p>
+
+            </div>
+
+
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+
+    </div>
+    <br><br>
+
+  <!-- Main Footer -->
+<footer class="main-footer" style="background-color: #2d3653">
+  <strong>Copyright &copy; 2021 <a href="https://Oppenhiem.io">Oppenhiem.io</a>.</strong>
+ 
+
+</footer>
+</div>
+<!-- ./wrapper -->
+
+
+
+{% endblock %}
