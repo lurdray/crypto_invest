@@ -1,4 +1,4 @@
-#!/home/raymond/Desktop/RayGit/crypto_invest/venv/bin/python
+#!/home/raymond/Desktop/RayGit/blockchain-Invest/venv/bin/python
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 

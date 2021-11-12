@@ -14,10 +14,11 @@ class Referral(models.Model):
 
 	request_status = models.BooleanField(default=False)
 	paid_status = models.BooleanField(default=False)
+	
 	pub_date = models.DateTimeField(default=timezone.now)
 
 	def __str__(self):
-		return self.amount
+		return self.app_user.user.username
 
 
 

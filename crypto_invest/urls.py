@@ -15,6 +15,9 @@ urlpatterns = [
     path("", include("wallet.urls")),
     path("", include("referral.urls")),
 
+    path('accounts/', include('allauth.urls')),
+    path('ga-app/', include('ga_app.urls')),
+
 ]
 
 

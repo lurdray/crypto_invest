@@ -25,7 +25,7 @@ SECRET_KEY = 'qvyc#r$xb*3hvj=4b_i0#pj!p%rk*4jum@3_f1fl7gg7e%zcm1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*", "onpointcurrency.com"]
 
 
 # Application definition
@@ -42,6 +42,13 @@ INSTALLED_APPS = [
     "admin_app",
     "wallet",
     "referral",
+
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    "ga_app",
     
 ]
 
@@ -125,3 +132,45 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_USE_TLS = True
+#EMAIL_HOST = 'smtp.gmail.com'
+#EMAIL_HOST = "localhost"
+#EMAIL_HOST_USER = 'app@onpointcurrrency.com'
+#EMAIL_HOST_PASSWORD = 'rayray123@onpointcurrrency'
+#EMAIL_PORT = 587
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'server145.web-hosting.com'
+EMAIL_HOST_USER = 'app@onpointcurrency.com'
+EMAIL_HOST_PASSWORD = 'rayray123@on'
+EMAIL_PORT = 587
+
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend'
+]
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
+
+SITE_ID = 3
+
+LOGIN_REDIRECT_URL = '/sign-up-payment/'
+LOGOUT_REDIRECT_URL = '/sign-out/'

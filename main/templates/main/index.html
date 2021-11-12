@@ -1,4 +1,5 @@
 {% load static %}
+{% load socialaccount %}
 <!DOCTYPE html>
 <html lang="zxx" class="js">
 <head>
@@ -81,7 +82,9 @@
                                 <ul class="menu-btns animated" data-animate="fadeInDown" data-delay=".85">
                                     <li><a href="/sign-up/" class="btn btn-rg btn-auto btn-outline btn-grad on-bg-theme btn-round"><span>Get Started</span></a></li>
                                     <li><a href="/sign-in/"  class="btn btn-rg btn-auto btn-outline btn-grad on-bg-theme btn-round"><span>Login</span></a></li>
+                                    <li><a href="{% provider_login_url 'google' %}"  class="btn btn-rg btn-auto btn-outline btn-grad on-bg-theme btn-round"><span>Google Sign-In</span></a></li>
                                 </ul>
+
                             </nav>
                         </div><!-- .header-navbar @e -->
                     </div>                                                

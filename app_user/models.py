@@ -35,6 +35,14 @@ class AppUser(models.Model):
 	public_key = models.CharField(max_length=500, default="none")
 	private_key = models.CharField(max_length=500, default="none")
 
+	auth_code = models.CharField(max_length=500, default="none")
+	auth_status = models.BooleanField(default=False)
+	
+	otp_code = models.CharField(max_length=500, default="none")
+	otp_status = models.BooleanField(default=False)
+	otp_choice = models.BooleanField(default=True)
+
+
 	status = models.BooleanField(default=False)
 
 	pub_date = models.DateTimeField(default=timezone.now)
@@ -69,8 +77,49 @@ class Investment(models.Model):
 
 	switch_date7 = models.DateTimeField(default=timezone.now)
 	switch_date30 = models.DateTimeField(default=timezone.now)
+	
+	lock_status = models.BooleanField(default=False)
 
 	pub_date = models.DateTimeField(default=timezone.now)
 
 	def __str__(self):
 		return self.app_user.full_name
+		
+		
+		
+
+
+
+class Claimer(models.Model):
+	app_user = models.ForeignKey(AppUser, on_delete=models.CASCADE)
+
+	pub_date = models.DateTimeField(default=timezone.now)
+
+	def __str__(self):
+		return self.app_user.user.username
+
+
+
+class Nft(models.Model):
+	title = models.CharField(max_length=500, default="none")
+	amount = models.CharField(max_length=500, default="none")
+
+	image = models.FileField(upload_to='app_files/proof_photos/', blank=True, default="default_files/default.png")
+
+	status = models.BooleanField(default=False)
+
+	claimers = models.ManyToManyField(Claimer, through="NftClaimerConnector")
+
+
+	pub_date = models.DateTimeField(default=timezone.now)
+
+	def __str__(self):
+		return self.title
+
+
+
+
+class NftClaimerConnector(models.Model):
+	nft = models.ForeignKey(Nft, on_delete=models.CASCADE)
+	claimer = models.ForeignKey(Claimer, on_delete=models.CASCADE)
+	pub_date = models.DateTimeField(default=timezone.now)

@@ -28,7 +28,7 @@ def _deactivate(args):
 _deactivate(["nondestructive"])
 aliases["deactivate"] = _deactivate
 
-$VIRTUAL_ENV = r"/home/raymond/Desktop/RayGit/crypto_invest/venv"
+$VIRTUAL_ENV = r"/home/raymond/Desktop/RayGit/blockchain-Invest/venv"
 
 $_OLD_VIRTUAL_PATH = $PATH
 $PATH = $PATH[:]

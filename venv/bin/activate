@@ -46,7 +46,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV='/home/raymond/Desktop/RayGit/crypto_invest/venv'
+VIRTUAL_ENV='/home/raymond/Desktop/RayGit/blockchain-Invest/venv'
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

@@ -94,6 +94,18 @@
               </p>
             </a>
           </li>
+
+
+          <li class="nav-item">
+            {% url 'app_user:nfts' as nfts %}
+            <a href="{{ nfts }}" class="nav-link {% if nfts == request.path %} made {% endif %}">
+              <i class="nav-icon fa fa-wallet"></i>
+              <p>
+                NFTs 
+              </p>
+            </a>
+          </li>
+
             
           <li class="nav-item">
             <a href="{% url 'app_user:sign_out' %}" class="nav-link">

@@ -85,6 +85,27 @@
             </a>
           </li>
 
+          <li class="nav-item">
+            {% url 'admin_app:add_nft' as add_nft %}
+            <a href="{% url 'admin_app:add_nft' %}" class="nav-link {% if add_nft == request.path %} made {% endif %}">
+              <i class="nav-icon fa fa-user"></i>
+              <p>
+               Add NFT
+              </p>
+            </a>
+          </li>
+
+
+          <li class="nav-item">
+            {% url 'admin_app:nft' as nft %}
+            <a href="{% url 'admin_app:nft' %}" class="nav-link {% if nft == request.path %} made {% endif %}">
+              <i class="nav-icon fa fa-user"></i>
+              <p>
+                NFT
+              </p>
+            </a>
+          </li>
+
 
 
           <li class="nav-item">

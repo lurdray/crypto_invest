@@ -23,6 +23,12 @@ urlpatterns = [
 
 	path("app/admin/message", views.MessageView, name="message"),
 
+	path("app/admin/nft", views.NftView, name="nft"),
+	path("app/admin/add-nft/", views.AddNftView, name="add_nft"),
+	path('status/<int:nft_id>/', views.NftStatusView, name="nft_status"),
+	path('nft-claimers/<int:nft_id>/', views.NftClaimersView, name="nft_claimers"),
+
+
 
 	path('sign-out/', views.SignOutView, name="sign_out"),
 

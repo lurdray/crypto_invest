@@ -1,0 +1,179 @@
+{% extends "admin_app/base.html" %}
+{% load static %}
+{% block content %}
+
+
+
+
+<style>
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+</style>
+
+
+
+   <!-- Navbar -->
+  {% include 'admin_app/nav.html' %}
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  {% include 'admin_app/sidebar.html' %}
+<!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper" style="background-color: #28384c;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>All NFT Claimers</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">All NFT Claimers</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          
+          <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-warning">
+              <div class="card-header">
+                <h3 class="card-title">All NFT Claimers</h3>
+              </div>
+                
+              <!-- /.card-header -->
+              <!-- form start -->
+              {% if claimers %}
+                      <div class="card-body table-responsive p-0" style="background-color: #0e1326;">
+                        <table class="table table-hover text-nowrap">
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>Date</th>
+                              <th></th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            
+                              {% for item in claimers %}
+                                
+                                <tr>
+                                  <td>{{ item.app_user.full_name }}</td>
+                                  <td>{{ item.pub_date }}</td>
+                                   <td>
+                                     <a href="{% url 'admin_app:investor_detail' item.app_user.id %}"> <span style="color: #f5bd02;" class="fas fa-cogs"></span>
+                                        
+                                      </a>
+                                  </td>
+                                  <td></td>
+
+                                </tr>
+                                
+                              {% endfor %}
+
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="card-outline" style="background-color: #f39c12"><div></div> </div>
+            <!-- /.card -->
+                      {% else %}
+
+
+                      <div class="row container">
+                        
+                        
+                        <h2 class="container">Sorry, No Claimers Yet!</h2>
+                        <br /><br /><br />
+
+                      </div>                
+
+                      {% endif %}
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Main content -->
+
+            <br /><br />
+
+    <!-- Main Footer -->
+ <footer class="main-footer" style="background-color: #2d3653">
+    <strong>Copyright &copy; 2021 <a href="https://Oppenhiem.io">Oppenhiem.io</a>.</strong>
+   
+   
+  </footer>
+</div>
+<!-- ./wrapper -->
+
+
+
+{% endblock %}

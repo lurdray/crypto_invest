@@ -1,0 +1,99 @@
+
+
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+	<style type="text/css">
+		
+		.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+	</style>
+
+<!-- START HEADER/BANNER -->
+
+		<tbody><tr>
+			<td align="center">
+				<table class="col-600" width="600" border="0" align="center" cellpadding="0" cellspacing="0">
+					<tbody><tr>
+						<td align="center" valign="top" background="https://www.onpointcurrency.com/static/main/img/vendor/milestone-4.pngs" bgcolor="#66809b" style="background-size:cover; background-position:top;height=" 400""="">
+							<table class="col-600" width="600" height="400" border="0" align="center" cellpadding="0" cellspacing="0">
+
+								<tbody>
+
+
+								<tr>
+									<td align="center" style="line-height: 0px;">
+										<img style="display:block; line-height:0px; font-size:0px; border:0px; margin-left:-100px;" src="https://www.onpointcurrency.com/static/main/image/lasty.png" width="100%" height="auto" alt="logo">
+									</td>
+								</tr>
+
+								<tr>
+									<td align="center" style="font-family: 'Raleway', sans-serif; font-size:37px; color:#ffffff; line-height:24px; font-weight: bold; letter-spacing: 3px;">
+										{{ subject }}
+									</td>
+								</tr>
+
+								<tr>
+									<td height="10"></td>
+								</tr>
+
+
+								<tr>
+									<td align="center" style="font-family: 'Lato', sans-serif; font-size:14px; color:white; line-height:24px; font-weight: 300;">
+										{% if code %}
+											Auth Code is: {{ code }}<br /><br />
+										{% endif %}
+
+										<p style="color:white;">{{ message }}</p>
+										
+									</td>
+								</tr>
+
+
+								<tr>
+									<td height="10"></td>
+								</tr>
+
+								{% if link %}
+									<tr>
+										<td align="center" style="font-family: 'Lato', sans-serif; font-size:14px; color:white; line-height:24px; font-weight: 300;">
+											<a style="color:white;" class="button" href="{{ link }}" target="_blank">Click Link</a>
+										</td>
+									</tr>
+								{% endif %}
+
+								<tr>
+									<td height="10"></td>
+								</tr>
+
+							</tbody></table>
+						</td>
+					</tr>
+				</tbody></table>
+			</td>
+		</tr>
+
+		<tr>
+			<td height="20"></td>
+		</tr>
+
+		<tr>
+			{% if link %}
+				<tr>
+					<td align="center" style="font-family: 'Lato', sans-serif; font-size:14px; color:white; line-height:24px; font-weight: 300;">
+						<a style="color:white;" class="button" href="{{ link }}" target="_blank">Click Link</a>
+					</td>
+				</tr>
+			{% endif %}
+		</tr>
+			
+
+	</tbody>
+</table>

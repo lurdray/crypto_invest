@@ -1,0 +1,118 @@
+{% extends "admin_app/base.html" %}
+{% load static %}
+{% block content %}
+
+
+   <!-- Navbar -->
+  {% include 'admin_app/nav.html' %}
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  {% include 'admin_app/sidebar.html' %}
+<!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper" style="background-color: #28384c;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>All Referrals</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">All Referrals</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          
+          <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-warning">
+              <div class="card-header">
+                <h3 class="card-title">All Referrals</h3>
+              </div>
+                
+              <!-- /.card-header -->
+              <!-- form start -->
+              {% if referrals %}
+                      <div class="card-body table-responsive p-0" style="background-color: #0e1326;">
+                        <table class="table table-hover text-nowrap">
+                          <thead>
+                            <tr>
+                              <th>Date</th>
+                              <th>Referrer</th>
+                              <th>Amount</th>
+                              <th>Referree ID</th>
+                              <th>Payment Status</th>
+                              <th>Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            
+                              {% for item in referrals %}
+                                <tr>
+                                  <td>{{ item.pub_date }}</td>
+                                  <td>
+                                    <a href="{% url 'admin_app:referral_detail' item.id %}">
+                                    {{ item.app_user.full_name }}
+                                    </a>
+                                  </td>
+                                  <td>OPY{{ item.amount }}</td>
+                                  <td>{{ item.other_user_id }}</td>
+                                  <td>
+                                    {% if item.paid_status == False %}
+                                      <p>Not Paid</p>
+                                    {% else %}
+                                      <p>Paid</p>
+                                    {% endif %}
+                                  </td>
+                                  <td><a href="{% url 'admin_app:referral_detail' item.id %}"><span style="color: #f5bd02;" class="fas fa-cogs"></span></a></td>
+                                </tr>
+                              {% endfor %}
+                            
+                            
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="card-outline" style="background-color: #f39c12"><div></div> </div>
+            <!-- /.card -->
+                      {% else %}
+
+
+                      <div class="row container">
+                        
+                        
+                        <h2 class="container">Sorry, No Referrals Yet!</h2>
+                        <br /><br /><br />
+
+                      </div>                
+
+                      {% endif %}
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <br /><br />
+
+    <!-- Main Footer -->
+  <footer class="main-footer" style="background-color: #2d3653">
+    <strong>Copyright &copy; 2021 <a href="https://Oppenhiem.io">Oppenhiem.io</a>.</strong>
+   
+   
+  </footer>
+</div>
+<!-- ./wrapper -->
+
+
+
+{% endblock %}

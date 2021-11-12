@@ -82,19 +82,39 @@ def ReferralDetailView(request, referral_id):
 	referral = Referral.objects.get(id=referral_id)
 
 	if request.method == "POST":
+	    
+		app_user.otp_status = False
+		app_user.save()
+	    
 		referral.request_status = True
 		referral.save()
+		RaySendMail(request, "Withdrawal Request", "%s just requested for benefits from referral." % (referral.app_user.full_name), "info@onpointcurrency.com")
+
 
 		return HttpResponseRedirect(reverse("referral:index"))
 
 
 	else:
+	    
+		if app_user.otp_choice:
+			if app_user.otp_status:
 
-		context = {
-			"referral": referral,
-		}
+				context = {
+					"referral": referral,
+				}
+        
+				return render(request, "referral/referral_detail.html", context )
 
-		return render(request, "referral/referral_detail.html", context )
+
+			else:
+				return HttpResponseRedirect(reverse("ga_app:authenticate", args=["'referral:referral_detail', args=[%s,]"%(referral_id)]))
+    
+		else:
+			context = {
+				"referral": referral,
+			}
+    
+			return render(request, "referral/referral_detail.html", context )
 
 
 

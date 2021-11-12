@@ -55,7 +55,7 @@
 <div class="register-box">
   <div class="card card-outline card-yellow">
     <div class="card-header text-center" style="background-color: #343a40">
-      <a href="../../index2.html" class="h1"><b style="color: #f5bd02">Sign Up</b></a>
+      <a href="#" class="h1"><b style="color: #f5bd02">Sign Up</b></a>
     </div>
     <div class="card-body" style="background-color: #343a40">
       <p class="login-box-msg" style="color: #f5bd02">Create an account</p>
@@ -105,6 +105,17 @@
           </div>
         </div>
 
+        <div class="input-group mb-3">
+          <img src="{{ qrcode_img_url }}" width="100%" height="auto" />
+        </div>
+
+
+        <div class="input-group mb-3">
+          <div class="g-recaptcha" data-sitekey="6LewgOocAAAAAEZvhC7SWxf2RvqyhBQaz27Zgikp"></div>
+        </div>
+
+
+
 
         <div class="row">
           <div class="col-8">
@@ -133,6 +144,12 @@
 <!-- /.register-box -->
 
 <!-- jQuery -->
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<script type="text/javascript"></script>
+
+
 <script src="{% static 'app_user/plugins/jquery/jquery.min.j' %}"></script>
 <!-- Bootstrap 4 -->
 <script src="{% static 'app_user/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
