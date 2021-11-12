@@ -52,8 +52,62 @@
         </div>
     {% endfor %}
   {% endif %}
-  
-  
+<div class="register-box">
+  <div class="card card-outline card-yellow">
+    <div class="card-header text-center" style="background-color: #343a40">
+      <a href="#" class="h3">
+        <b style="color: #f5bd02">Google Authentication</b></a>
+      <br /><small style="color: white;">Further secure your account.</small>
+    </div>
+    <div class="card-body" style="background-color: #343a40">
+      <p style="color: white;">Please scan the QR Code with the Google Authenticator App to ensure you have a more secured account.</p><br />
+      <form method="post">
+        {% csrf_token %}
+         
+
+        <a href=" ">Refresh</a>
+        <br /><a href="#">Download Google Auth App</a>
+        <br /><br />
+        <div class="input-group mb-3">
+          <p class="text-center">
+            <img src="{{ qrcode_img_url }}" width="70%" height="auto">
+          </p>
+        </div>
+
+        <p>Or setup with Secret Key using the details below<br />
+          Account: "your name"<br />
+        Secret: "{{ secret }}"
+      </p>
+
+
+        <div class="row">
+          <div class="col-12">
+            <div class="icheck-primary">
+              <input type="checkbox" id="agreeTerms" name="otp_choice" value="Accept">
+              <label for="agreeTerms" style="color: white;">
+               Check the box if you DO NOT want this additional security layer!.
+              </label>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <!-- /.col -->
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary btn-block">Verify!</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+
+    </div>
+    <!-- /.form-box -->
+  </div><!-- /.card -->
+</div>
+<!-- /.register-box -->
+
+<!-- jQuery -->
 
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
